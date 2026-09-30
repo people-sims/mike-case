@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Mike Case — Leadership Simulation</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#3a0d13;--ink2:#5c1420;--panel:#4a1520;--panel2:#5c1c28;--paper:#f5ece0;--dim:#d9b6ab;--gold:#f2a71b;--line:rgba(245,236,224,.16);--lineS:rgba(245,236,224,.32);color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0)}
+body{margin:0;background:linear-gradient(150deg,var(--ink),var(--ink2) 60%,#42111a);color:var(--paper);font-family:Inter,sans-serif;line-height:1.55;padding-top:env(safe-area-inset-top,0);padding-bottom:env(safe-area-inset-bottom,0);min-height:100vh}
+h1,h2,.serif{font-family:Fraunces,serif}
+.top{position:sticky;top:0;z-index:10;padding:14px 20px;padding-top:calc(14px + env(safe-area-inset-top,0));background:rgba(58,13,19,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:16px;justify-content:space-between}
+.brand{font-size:13px;color:var(--dim)}.brand b{color:var(--paper)}
+.meter{flex:1;max-width:340px;height:7px;background:rgba(245,236,224,.15);position:relative}
+.meter i{display:block;height:100%;background:var(--gold);transition:width .4s}
+.meterNum{font-family:Fraunces,serif;font-weight:600;min-width:40px;text-align:right}
+.admBtn{font-size:12px;color:var(--dim);border:1px solid var(--lineS);padding:6px 10px;background:none;cursor:pointer;color:var(--paper)}
+main{display:flex;justify-content:center;padding:44px 20px 90px}
+.stage{max-width:660px;width:100%}
+h1{font-size:30px;margin:4px 0 22px}
+.tag{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--dim)}
+.narrative p{font-size:16.5px;color:#f0e2d6;max-width:60ch;margin:0 0 14px}
+em{color:var(--paper);font-style:italic}
+.div{height:1px;background:var(--line);margin:28px 0}
+.choice{display:flex;gap:14px;border:1px solid var(--line);border-left:3px solid var(--lineS);background:rgba(0,0,0,.14);padding:16px 18px;margin-bottom:10px;width:100%;text-align:left;cursor:pointer;color:var(--paper);font-family:inherit}
+.choice:hover{border-left-color:var(--gold);background:rgba(0,0,0,.26)}
+.cl{font-family:Fraunces,serif;color:var(--gold);font-size:19px;min-width:20px}
+.clabel{font-weight:600;margin-bottom:3px}
+.ctext{font-size:14px;color:#e6cfc2}
+.conseq{border:1px solid var(--lineS);background:rgba(0,0,0,.22);padding:24px}
+.conseq h4{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--dim);margin:0 0 6px}
+.conseq p{margin:0 0 16px;font-size:14.5px;color:#f0e2d6}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:6px}
+.chip{font-size:12px;padding:5px 9px;border:1px solid var(--lineS);display:inline-flex;gap:6px;align-items:center;color:var(--paper)}
+.chip.on{border-color:rgba(242,167,27,.6);background:rgba(242,167,27,.1)}
+.chip.muted{color:var(--dim);font-style:italic}
+.impLabel{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--dim);margin:16px 0 8px}
+.btn{background:var(--gold);color:#2a0a0e;border:none;padding:12px 24px;font-weight:700;cursor:pointer;margin-top:20px;font-size:14.5px}
+.btn.sec{background:none;color:var(--paper);border:1px solid var(--lineS)}
+input[type=text]{width:100%;max-width:340px;background:rgba(0,0,0,.2);border:1px solid var(--lineS);color:var(--paper);padding:11px 13px;margin-bottom:20px;font-size:16px}
+.fw{border:1px solid var(--lineS);background:rgba(0,0,0,.15);padding:22px;margin:8px 0 28px}
+.fwGrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
+@media(max-width:700px){.fwGrid{grid-template-columns:1fr}}
+.badge{display:inline-block;background:var(--gold);color:#2a0a0e;font-weight:700;font-size:10.5px;letter-spacing:.06em;padding:3px 9px;margin-bottom:10px;text-transform:uppercase}
+.fwCol .tagline{font-size:9.5px;color:var(--dim);text-transform:none;letter-spacing:0;margin-left:6px}
+.fwItem{font-size:13px;color:#e6cfc2;margin-bottom:10px;padding-left:10px;border-left:2px solid var(--line)}
+.fwItem.mute{opacity:.7}
+.fwItem b{display:block;color:var(--paper);font-size:12.5px;margin-bottom:2px}
+.fwItem .ask{display:block;margin-top:4px;font-style:italic;color:var(--dim);font-size:11.5px}
+.note{font-size:13px;color:var(--dim);border-left:2px solid var(--gold);padding-left:12px;max-width:58ch;margin:14px 0}
+.finalNum{font-family:Fraunces,serif;font-size:76px;font-weight:600;line-height:1;margin:6px 0 2px}
+.sub{color:var(--dim);font-size:12px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:26px}
+.bar{display:grid;grid-template-columns:170px 1fr 32px;gap:12px;align-items:center;margin-bottom:12px}
+.bn{font-size:12px;color:var(--dim)}
+.bt{height:6px;background:rgba(245,236,224,.15)}.bf{height:100%;background:var(--gold)}
+.profile{font-family:Fraunces,serif;color:var(--gold);font-size:22px;margin:20px 0 10px}
+.focus{border:1px solid var(--gold);background:rgba(242,167,27,.1);padding:18px 20px;margin:22px 0}
+.focus b.name{display:block;font-family:Fraunces,serif;font-size:20px;margin:8px 0 6px}
+.card{border:1px solid var(--lineS);padding:28px;background:rgba(0,0,0,.18)}
+.sec{margin-bottom:20px}
+.sec h4{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--dim);margin:0 0 8px}
+.sec ul{margin:0;padding-left:18px}
+.sec li{font-size:14.5px;color:#f0e2d6;margin-bottom:6px}
+.commit{font-style:italic;border-left:2px solid var(--gold);padding-left:12px;font-size:15px}
+.stat{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin:20px 0}
+.sc{background:var(--ink);padding:14px}
+.sc .n{font-family:Fraunces,serif;font-size:22px}
+.sc .l{font-size:10px;text-transform:uppercase;color:var(--dim);margin-top:3px}
+table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:30px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)}
+th{color:var(--dim);text-transform:uppercase;font-size:10px}
+.imp{border:1px solid var(--lineS);padding:16px 18px;margin:22px 0}
+.imp textarea{width:100%;min-height:60px;background:rgba(0,0,0,.2);border:1px solid var(--lineS);color:var(--paper);padding:8px;margin:8px 0}
+.warn{border:1px solid rgba(255,180,120,.5);background:rgba(255,180,120,.1);color:#ffe2c4;font-size:13px;padding:12px 14px;margin-bottom:20px}
+@media print{.top,.btn{display:none!important}body{background:#fff;color:#111}.card{border-color:#999;background:#fff}}
+</style>
+</head>
+<body><div id="app"></div>
+<script>
+const DIMS=['inclusion','engage','develop','results','accountability','grow'];
+const LABEL={inclusion:'Foster Inclusion',engage:'Engage & Inspire',develop:'Develop Talent',results:'Deliver Results',accountability:'Promote Accountability',grow:'Grow Yourself'};
+const LABEL_FULL={inclusion:'Build a Diverse Team and Foster Inclusion',engage:'Engage and Inspire',develop:'Develop Talent',results:'Deliver Results',accountability:'Promote Accountability',grow:'Continue to Grow Yourself'};
+const GROUPNAME={inclusion:'Empower',engage:'Empower',develop:'Empower',results:'Elevate',accountability:'Elevate',grow:'Elevate'};
+const EXCEL=[
+ {n:'Live Your Passion for the Brand',w:'Connects the team\u2019s work to adidas\u2019 purpose, products, consumers, and culture \u2014 in decisions, not just words.',a:'Do I feel more connected to adidas because of how my leader shows up?'},
+ {n:'Act Like It\u2019s Your Own Company',w:'Takes real ownership, balancing business impact, people, and long-term consequences.',a:'Does my leader take ownership for decisions and outcomes even when it\u2019s uncomfortable?'},
+ {n:'Think Bigger and Beyond',w:'Looks ahead, challenges today\u2019s way of working, and creates space for better solutions.',a:'Does my leader help us look ahead, or are we mostly reacting to day-to-day demand?'}
+];
+const SCORED_WHAT={inclusion:'Creates an environment where different perspectives are genuinely valued and included.',engage:'Gives clear direction and energy that helps people do their best work.',develop:'Actively supports growth through feedback, trust, and opportunities.',results:'Helps turn goals into outcomes by focusing on what truly creates value.',accountability:'Sets clear expectations and addresses issues constructively.',grow:'Role models learning and openness to feedback.'};
+
+const PHASES=[
+{id:1,tag:'1 of 5',title:'The Comment',
+ narrative:["Your team is midway through the weekly meeting. Alex, who joined two months ago, proposes a new approach to client onboarding \u2014 a little raw, but promising.",
+ "Mike, a senior engineer, chuckles and leans back: <em>\u201CWe actually tried that years ago,\u201D</em> he says, smiling. A few people laugh along.",
+ "Still friendly, he adds: <em>\u201CI guess every new hire has to rediscover our old mistakes.\u201D</em> Alex smiles too \u2014 but it doesn\u2019t reach their eyes. They go quiet for the rest of the meeting.",
+ "It was a quick comment, mildly funny even. You have maybe two seconds to decide if it\u2019s worth pausing the meeting for."],
+ choices:[
+ {k:'A',l:'Laugh along and move on',t:'Mike is well-liked, and it was \u2014 technically \u2014 a joke. Calling it out might make you the one who kills the room\u2019s energy.',
+  imm:'The meeting continues smoothly. Mike feels affirmed. Alex says nothing else for the rest of the meeting.',
+  del:'In the following weeks, Alex\u2019s contributions in meetings drop off almost entirely \u2014 though it\u2019s hard to say for certain this is why.',
+  d:{inclusion:-6,engage:-4,develop:0,results:-2,accountability:-6,grow:-2},
+  why:'This keeps the meeting light and doesn\u2019t make a small joke into a bigger deal \u2014 a defensible instinct in the moment. The cost is that, in real time, you can\u2019t actually know whether this was harmless or the first domino.'},
+ {k:'B',l:'Name it respectfully, right there',t:'\u201CMike, I know that wasn\u2019t meant to sting \u2014 but let\u2019s make sure new ideas get a fair hearing, regardless of what we\u2019ve tried before. Alex, can you say more about what\u2019s different this time?\u201D',
+  imm:'The room goes quiet for a second. Mike looks surprised but nods: \u201CFair enough.\u201D Alex, hesitant, keeps explaining.',
+  del:'In the following weeks, others are slightly more willing to speak up \u2014 though Mike also seems a bit more guarded around you.',
+  d:{inclusion:8,engage:5,develop:4,results:2,accountability:7,grow:3},
+  why:'Naming it in the moment protects Alex and signals what\u2019s acceptable, in real time. It also means correcting a well-liked colleague in front of the whole team over what was, on its face, a small comment.'},
+ {k:'C',l:'Stay silent and move the discussion forward',t:'\u201CGood point \u2014 let\u2019s also hear from the rest of the team.\u201D You redirect without naming the comment, planning to watch for a pattern.',
+  imm:'The meeting continues without friction. Nobody seems to notice anything happened.',
+  del:'Alex is a little quieter in the next few meetings. You\u2019re not sure if it\u2019s related.',
+  d:{inclusion:-3,engage:-1,develop:0,results:0,accountability:-3,grow:1},
+  why:'Keeping the meeting moving avoids turning one comment into a confrontation and gives you room to watch before reacting. The risk is that watching and not noticing look identical, from Alex\u2019s side.'}]},
+
+{id:2,tag:'2 of 5',title:'Mike Interrupts Again',
+ narrative:["Two weeks later. Alex is walking the team through a fix for a recurring bug. Mid-sentence, Mike jumps in: <em>\u201CActually, I think the faster path is just to patch it at the API layer.\u201D</em>",
+ "Alex stops talking. Mike isn\u2019t wrong, technically \u2014 it might even be the better fix. But it\u2019s the second time this month he\u2019s cut Alex off before finishing a thought. Nobody else seems to notice.",
+ "You have maybe three seconds to decide what, if anything, you do \u2014 in front of the whole team."],
+ choices:[
+ {k:'A',l:'Call it out immediately, in the room',t:'\u201CHold on, Mike \u2014 let Alex finish the thought first.\u201D',
+  imm:'The room goes quiet. Alex finishes, a little flustered. Mike raises his hands: \u201CSorry, sorry \u2014 go ahead.\u201D',
+  del:'Alex seems to stand a little straighter in the meetings that follow. Mike is noticeably quieter for the rest of this one.',
+  d:{inclusion:7,engage:-3,develop:1,results:-2,accountability:6,grow:1},
+  why:'Correcting it live protects the moment for Alex and shows the whole team what\u2019s expected. It also means correcting a senior, well-liked colleague in front of the group over a technical suggestion that wasn\u2019t even wrong.'},
+ {k:'B',l:'Let it pass, address it with Mike privately right after',t:'The meeting continues. Afterward, you catch Mike: \u201CYou\u2019ve cut Alex off twice this month. Leave room for them to finish.\u201D',
+  imm:'The meeting stays smooth. Privately, Mike takes the note without much reaction: \u201CNoted, sorry about that.\u201D',
+  del:'Alex never sees the correction happen. From their side, the meeting felt like the ones before it.',
+  d:{inclusion:1,engage:2,develop:3,results:4,accountability:4,grow:2},
+  why:'A private word protects Mike from public embarrassment and keeps the meeting\u2019s energy intact. The cost is that Alex never actually sees the correction happen, so the room\u2019s unspoken read of what\u2019s acceptable doesn\u2019t change.'},
+ {k:'C',l:'Redirect neutrally without naming what happened',t:'\u201CAlex, keep going \u2014 we\u2019ll circle back to Mike\u2019s point.\u201D',
+  imm:'The meeting continues without confrontation. Alex finishes their point.',
+  del:'A similar moment happens again the following week. It\u2019s starting to look less like a slip and more like a habit specific to Alex.',
+  d:{inclusion:2,engage:1,develop:1,results:1,accountability:-2,grow:0},
+  why:'This keeps things moving and gives Alex room to finish without confrontation. The risk is that it treats the interruption as incidental rather than a pattern worth naming, so nothing about the norm actually changes.'}]},
+
+{id:3,tag:'3 of 6',title:'Writing the Review',
+ narrative:["Performance review season arrives. You need to put this pattern in writing as part of Mike\u2019s formal review \u2014 something that will follow him, and that he\u2019ll read.",
+ "You\u2019re weighing a few ways to phrase it. None of them look outright wrong on paper \u2014 but each has a catch you won\u2019t fully see until after it\u2019s written."],
+ choices:[
+ {k:'A',l:'Keep it in your private manager notes, without telling Mike it\u2019s there',t:'You add a confidential note to your own file flagging the pattern as something to monitor, without raising it with Mike directly.',
+  imm:'Mike\u2019s review reads fine to him. He has no idea anything was flagged.',
+  del:'If this ever factors into a promotion or bonus decision, Mike will have had no chance to respond to something he never knew existed.',
+  d:{inclusion:-1,engage:0,develop:-3,results:0,accountability:-6,grow:-2},
+  why:'Keeping a private note feels cautious, and avoids an uncomfortable conversation before you\u2019re fully ready to have it. But documenting something that can affect Mike\u2019s career without ever telling him breaks the basic fairness of feedback \u2014 he can\u2019t improve on, or contest, something he\u2019s never been told exists.'},
+ {k:'B',l:'Frame it as a general trait \u2014 \u201Cneeds to build more patience with junior talent\u201D',t:'You write the note in general terms, without tying it to the specific comments or moments you actually saw.',
+  imm:'Mike reads it and isn\u2019t sure what, specifically, to change. \u201CI guess I\u2019ll try to be more patient?\u201D',
+  del:'Without specifics, the same pattern is likely to repeat, and next year\u2019s review may say something similar, just as vaguely.',
+  d:{inclusion:-1,engage:-1,develop:-4,results:-1,accountability:-3,grow:-1},
+  why:'A general trait note avoids relitigating specific, possibly disputed moments, and feels less confrontational to write. But turning a behavior into a personality label gives Mike nothing concrete to act on \u2014 and character-level feedback is exactly where people get defensive instead of reflective.'},
+ {k:'C',l:'Include a detail from Alex\u2019s private conversation with you, without naming them, as evidence',t:'You add a line referencing that \u201Ca team member privately shared feeling shut down in meetings\u201D \u2014 specific enough that Mike could likely guess who.',
+  imm:'Mike reads it and, within a day, asks Alex directly: \u201CHey, did you say something to our manager about me?\u201D',
+  del:'Alex feels blindsided that a private conversation became identifiable evidence, and is now warier of ever confiding in you again.',
+  d:{inclusion:-4,engage:-1,develop:-2,results:0,accountability:1,grow:-1},
+  why:'Grounding feedback in a real, specific moment is exactly what makes it credible and actionable. The cost here is doing it in a way that\u2019s traceable back to Alex without their consent \u2014 it turns someone\u2019s trust in you into evidence they didn\u2019t agree to provide, and teaches your team that confiding in you isn\u2019t actually safe.'}]},
+
+{id:4,tag:'4 of 6',title:'The Difficult Conversation',
+ narrative:["You ask Mike for fifteen minutes. Before you can open the conversation, he says, with an easy laugh: <em>\u201CIf this is about that joke, I think people are becoming a little too sensitive these days.\u201D</em>",
+ "After you\u2019ve made your point, he adds: <em>\u201CUnderstood. I\u2019ll try to sound less experienced next time\u201D</em> \u2014 a wry smile \u2014 <em>\u201Cbut I wasn\u2019t trying to discourage anyone.\u201D</em>",
+ "He hasn\u2019t fully connected the dots yet. You\u2019ve already said your piece once. How much more is worth saying right now is a genuinely close call."],
+ choices:[
+ {k:'A',l:'Keep it warm, mention it lightly, wrap up',t:'\u201CJust something to think about,\u201D you say, and end the conversation there.',
+  imm:'The conversation ends on an easy note. Mike leaves feeling heard rather than lectured.',
+  del:'Without reinforcement, Mike\u2019s takeaway settles into something closer to \u201Cbe a little nicer,\u201D not a specific pattern to change.',
+  d:{inclusion:-1,engage:3,develop:-4,results:0,accountability:-8,grow:-2},
+  why:'Ending here respects that you\u2019ve already delivered clear feedback \u2014 repeating yourself can suggest you don\u2019t trust him to have understood. The risk is that his last comment suggests he hasn\u2019t fully connected the dots, and you\u2019re choosing not to check.'},
+ {k:'B',l:'Be specific \u2014 situation, behavior, impact \u2014 and hold the line even after his first response',t:'\u201CI hear that you weren\u2019t trying to discourage anyone \u2014 I believe that. And the impact still happened, regardless of intent. That\u2019s the thing I need you to sit with.\u201D',
+  imm:'Mike goes quiet for a second. \u201CFair,\u201D he finally says. Not a full breakthrough \u2014 but something.',
+  del:'Over the following weeks, Mike is visibly more careful \u2014 not perfect, but trying.',
+  d:{inclusion:6,engage:6,develop:10,results:5,accountability:10,grow:6},
+  why:'Separating intent from impact gives Mike something concrete to work with, instead of something to defend. The cost is a longer, less comfortable conversation, extending something he seemed ready to close.'},
+ {k:'C',l:'Be blunt about the pattern, no cushioning',t:'\u201CMike, this keeps happening, and it needs to stop \u2014 no middle ground.\u201D',
+  imm:'Mike stiffens. \u201COkay... I hear you\u201D \u2014 more defensive than reflective.',
+  del:'The message lands, technically. But Mike is more guarded for a while, without necessarily understanding why.',
+  d:{inclusion:-2,engage:-6,develop:-5,results:-1,accountability:8,grow:-2},
+  why:'Bluntness removes any ambiguity about how serious this is. The cost is that, without empathy, it\u2019s easy for Mike to hear this as an attack rather than information he can use.'}]},
+
+{id:5,tag:'5 of 6',title:'Reinforcing the Message',
+ narrative:["You want to make sure the change sticks. Three ways to \u201Clock in\u201D the message \u2014 none of them is misconduct, but it\u2019s worth noticing what each one actually teaches the team."],
+ choices:[
+ {k:'A',l:'Summarize it in writing and CC Mike\u2019s manager, \u201Cto be transparent\u201D',t:'You send an email summarizing the conversation and copy Mike\u2019s manager on it.',
+  imm:'The email goes out. Mike replies politely, but visibly surprised at who was copied.',
+  del:'Mike starts hesitating before agreeing to any informal conversation with you \u2014 he no longer knows what becomes a record.',
+  d:{inclusion:-2,engage:-4,develop:-3,results:0,accountability:2,grow:-3},
+  why:'This looks like accountability, but escalating without telling Mike first turns a coaching moment into a surprise consequence \u2014 it breaks the trust that a private conversation would stay private, and teaches the team that talking to you privately isn\u2019t actually private.'},
+ {k:'B',l:'Publicly praise Mike in the next meeting for \u201Clistening well\u201D',t:'In the next meeting, you highlight publicly how Mike has \u201Cimproved his listening.\u201D',
+  imm:'Mike looks a little embarrassed but accepts the praise. The team doesn\u2019t quite follow the context.',
+  del:'No one on the team saw Mike get this wrong in public \u2014 so the praise feels manufactured, and Mike himself isn\u2019t sure how to read it next time.',
+  d:{inclusion:-1,engage:-2,develop:-2,results:0,accountability:-2,grow:-2},
+  why:'Public praise feels generous, but manufacturing a moment about a private correction \u2014 without warning Mike it\u2019s coming \u2014 puts him on display for something the team never saw him get right in the first place, and teaches the room that feedback is theater, not honesty.'},
+ {k:'C',l:'Ask Alex, in front of Mike, to confirm things feel better now',t:'\u201CAlex, do you feel things have improved with Mike?\u201D you ask, with Mike present.',
+  imm:'Alex hesitates, glances at Mike, and gives a vague, positive answer.',
+  del:'Alex avoids bringing up anything related to Mike for the following weeks, even when asked privately.',
+  d:{inclusion:-3,engage:-3,develop:-1,results:0,accountability:0,grow:-1},
+  why:'This puts the person with the least power in the room in the position of having to publicly vouch for their own senior colleague\u2019s improvement, on the spot \u2014 even framed kindly, it turns Alex\u2019s psychological safety into something they have to perform for an audience.'}]},
+
+{id:6,tag:'6 of 6',title:'Closing the Loop',
+ narrative:["A month later. Mike hasn\u2019t made a dismissive joke in weeks, and the interrupting has mostly stopped. Alex has started speaking up again, tentatively.",
+ "Real progress, not perfection \u2014 and it should show up in the team\u2019s results too, not just its climate. What to do with that now is a genuinely disputed call among leaders."],
+ choices:[
+ {k:'A',l:'Keep it informal \u2014 mention things as they come up',t:'You decide not to formalize anything, and keep an eye on it the way you have been.',
+  imm:'Nothing changes day-to-day. Mike doesn\u2019t feel like he\u2019s \u201Con a plan.\u201D',
+  del:'Progress mostly holds, though a few small moments slip past unaddressed when your own attention is elsewhere.',
+  d:{inclusion:2,engage:4,develop:2,results:2,accountability:1,grow:4},
+  why:'Staying informal preserves the feel of genuine mentorship, matching Mike\u2019s real, voluntary progress. The trade-off is that it depends entirely on your continued attention \u2014 nothing forces you to keep noticing if your own bandwidth shrinks.'},
+ {k:'B',l:'Put it in writing \u2014 a short development note with a follow-up date',t:'You draft a few lines summarizing the pattern, the progress, and a follow-up date, and share it with Mike directly.',
+  imm:'Mike reads it carefully. \u201CI get why you\u2019re writing this down. I just didn\u2019t expect it to be... official.\u201D',
+  del:'Expectations are now unambiguous for both of you \u2014 but the relationship shifts slightly, from mentorship toward something closer to process.',
+  d:{inclusion:0,engage:-2,develop:5,results:4,accountability:8,grow:1},
+  why:'Documentation creates a clear, fair record that protects both Mike and Alex if anything resurfaces later. The cost is that formalizing earlier than Mike feels is warranted can read as escalation, cooling a relationship that was actually moving in the right direction.'},
+ {k:'C',l:'Consider it resolved and move on',t:'Given the visible improvement, you decide not to raise it again unless something new comes up.',
+  imm:'Nothing is said. Everyone moves on, including you.',
+  del:'A few months later, a quieter version of the original pattern resurfaces \u2014 this time with a different junior teammate.',
+  d:{inclusion:-4,engage:-1,develop:-5,results:-3,accountability:-6,grow:-6},
+  why:'Real progress deserves recognition, and constantly reopening a resolved issue has its own cost. The risk, given you\u2019ve already seen this pattern quietly resurface once, is treating \u201Cbetter\u201D as the same thing as \u201Cdone.\u201D'}]}
+];
+
+const PROFILES={
+ champion:{name:'Psychological Safety Champion',sum:'You consistently intervened with respect, courage, and specificity \u2014 even when it was uncomfortable. Your team is more likely to speak up, disagree, and take risks because of how you responded.',str:'Direct, specific feedback. Balances empathy with accountability. Follows through over time.',risk:'Watch for fatigue \u2014 consistently initiating hard conversations takes real energy.',foc:'Build habits (feedback templates, regular pulse-checks) so this doesn\u2019t depend on your energy alone.'},
+ inconsistent:{name:'Inclusive but Inconsistent',sum:'You care about inclusion, but your responses were uneven \u2014 sometimes courageous and specific, other times avoidant or vague. Your team likely experiences safety as situational.',str:'Genuine care for the team. Capable of strong intervention when you commit to it.',risk:'Inconsistency can be more confusing than a consistently lower bar.',foc:'Practice specific feedback every time, even for small moments.'},
+ avoider:{name:'Conflict Avoider',sum:'You tend to prioritize comfort over direct intervention. Issues you noticed often went unaddressed, or were addressed too gently.',str:'Warm, low-conflict presence.',risk:'Avoidance has a cost: without intervention, dominant voices quietly crowd out others.',foc:'Practice naming small issues in the moment, before they become patterns.'},
+ silencer:{name:'Unintended Silencer',sum:'Despite good intentions, your choices \u2014 laughing along, staying silent, softening feedback \u2014 likely reinforced the very dynamics that discourage participation. One of the most common, least visible failures, coming from people who never meant harm.',str:'Not malicious, not aggressive \u2014 a genuinely fixable pattern once it\u2019s visible.',risk:'Team members may quietly disengage rather than confront you, since nothing you did was overtly wrong.',foc:'Start with the smallest, most immediate interventions: address comments in the moment, not after.'}
+};
+
+let state={screen:'intro',name:'',idx:0,scores:{inclusion:60,engage:60,develop:60,results:60,accountability:60,grow:60},log:[],cur:null,saveWarn:false,admLoading:false,admRecs:[],importMsg:null};
+let dbNs=null;
+
+function clamp(v){return Math.max(0,Math.min(100,v));}
+function esc(s){const d=document.createElement('div');d.innerText=s==null?'':s;return d.innerHTML;}
+function finalScore(sc){sc=sc||state.scores;return Math.round(DIMS.reduce((s,c)=>s+sc[c],0)/DIMS.length);}
+function profileKey(sc){sc=sc||state.scores;const s=finalScore(sc);
+ if(s>=80)return 'champion'; if(s>=60)return 'inconsistent';
+ return (sc.engage<=sc.accountability)?'avoider':'silencer';}
+function b64e(o){try{return btoa(unescape(encodeURIComponent(JSON.stringify(o))));}catch(e){return '';}}
+function b64d(s){try{return JSON.parse(decodeURIComponent(escape(atob(s.trim()))));}catch(e){return null;}}
+function copy(t,el){const done=()=>{if(el){const o=el.textContent;el.textContent='Copied \u2713';setTimeout(()=>el.textContent=o,1400);}};
+ if(navigator.clipboard){navigator.clipboard.writeText(t).then(done).catch(()=>{});} }
+
+function topbar(){
+ if(state.screen==='intro'||state.screen==='admin')
+  return `<div class="top"><div class="brand">The Mike Case <span style="color:var(--dim)">/</span> <b>Leadership Simulation</b></div></div>`;
+ const s=finalScore();
+ return `<div class="top"><div class="tag" style="min-width:70px">${PHASES[state.idx].tag}</div><div class="meter"><i style="width:${s}%"></i></div><div class="meterNum">${s}%</div></div>`;
+}
+
+function renderIntro(){
+ const excelHtml=EXCEL.map(x=>`<div class="fwItem mute"><b>${x.n}</b>${x.w}<span class="ask">\u201C${x.a}\u201D</span></div>`).join('');
+ const empHtml=['inclusion','engage','develop'].map(d=>`<div class="fwItem"><b>${LABEL_FULL[d]}</b>${SCORED_WHAT[d]}</div>`).join('');
+ const eleHtml=['results','accountability','grow'].map(d=>`<div class="fwItem"><b>${LABEL_FULL[d]}</b>${SCORED_WHAT[d]}</div>`).join('');
+ return `<main><div class="stage">
+ <div class="tag" style="margin-bottom:8px">A Leadership Simulation</div>
+ <h1>The Mike Case</h1>
+ <p style="font-size:17px;color:#f0e2d6;max-width:56ch">You manage a team of eight. Mike is senior, funny, well-liked \u2014 and, without meaning to, makes it harder for newer voices to be heard. What you do about it defines what your team believes is safe to say out loud.</p>
+ <div class="fw">
+  <p style="font-size:13px;color:var(--dim);margin:0 0 16px">Every decision is scored against the adidas Leadership Framework. Psychological safety isn\u2019t a standalone skill \u2014 it\u2019s the outcome of these pillars practiced consistently. Because this directly affects team performance, <b style="color:var(--paper)">Deliver Results</b> is scored here too, alongside Empower and Elevate.</p>
+  <div class="fwGrid">
+   <div class="fwCol"><span class="badge">Excel</span><span class="tagline">shown for context, not scored here</span>${excelHtml}</div>
+   <div class="fwCol"><span class="badge">Empower</span><span class="tagline">scored in this simulation</span>${empHtml}</div>
+   <div class="fwCol"><span class="badge">Elevate</span><span class="tagline">scored in this simulation</span>${eleHtml}</div>
+  </div>
+ </div>
+ <p style="font-size:14px;color:var(--dim);max-width:56ch">6 decisions. Most have no clearly perfect option \u2014 reasonable leaders would choose differently. At the end you get a profile and one pillar to focus on for group discussion.</p>
+ <label style="display:block;font-size:12px;text-transform:uppercase;color:var(--dim);margin:20px 0 6px">Your name</label>
+ <input type="text" id="nm" placeholder="e.g. Jordan Lee" onkeydown="if(event.key==='Enter')start()">
+ <div><button class="btn" onclick="start()">Begin the Simulation</button></div>
+ </div></main>`;
+}
+
+function renderPhase(){
+ const p=PHASES[state.idx];
+ const nar=p.narrative.map(x=>`<p>${x}</p>`).join('');
+ const ch=p.choices.map((c,i)=>`<button class="choice" onclick="pick(${i})"><div class="cl">${c.k}</div><div><div class="clabel">${esc(c.l)}</div><div class="ctext">${c.t}</div></div></button>`).join('');
+ return `<main><div class="stage"><h1>${esc(p.title)}</h1><div class="narrative">${nar}</div><div class="div"></div><div class="tag" style="margin-bottom:14px">What do you do?</div>${ch}</div></main>`;
+}
+
+function renderConseq(){
+ const p=PHASES[state.idx],c=state.cur;
+ const on=DIMS.filter(d=>(c.d[d]||0)>0),off=DIMS.filter(d=>(c.d[d]||0)<=0);
+ const chip=(d,active)=>`<span class="chip ${active?'on':''}">${GROUPNAME[d]} \u00b7 ${LABEL[d]}</span>`;
+ const last=state.idx===PHASES.length-1;
+ return `<main><div class="stage"><div class="tag" style="margin-bottom:14px">${p.tag} \u2014 Outcome</div>
+ <div class="conseq">
+ <div class="tag" style="color:var(--gold);margin-bottom:10px">You chose: ${c.k}. ${esc(c.l)}</div>
+ <h4>Immediate reaction</h4><p>${c.imm}</p>
+ <h4>Down the line</h4><p>${c.del}</p>
+ <div class="impLabel">Pillars this choice leaned into</div>
+ <div class="chips">${on.length?on.map(d=>chip(d,true)).join(''):'<span class="chip muted">None, this time</span>'}</div>
+ <div class="impLabel">Pillars left on the table this time</div>
+ <div class="chips">${off.length?off.map(d=>chip(d,false)).join(''):'<span class="chip muted">None, this time</span>'}</div>
+ <h4 style="margin-top:18px">Why</h4><p style="margin:0">${c.why}</p>
+ </div>
+ <button class="btn" onclick="next()">${last?'See Your Results':'Continue \u2192'}</button>
+ </div></main>`;
+}
+
+function devPlan(){
+ const sorted=DIMS.slice().sort((a,b)=>state.scores[b]-state.scores[a]);
+ const weakest=sorted[sorted.length-1];
+ const CONT={inclusion:'Making space for newer or quieter voices to finish their thought.',engage:'Bringing energy and trust into difficult conversations instead of letting them go flat.',develop:'Giving feedback that is specific and actionable, not just emotional.',results:'Connecting psychological safety to better, faster technical decisions.',accountability:'Naming specific behaviors directly with the person responsible.',grow:'Staying curious about your own blind spots.'};
+ const START={inclusion:'Actively inviting quieter team members back into the conversation.',engage:'Using tension as a chance to build trust, not just get through it.',develop:'Structuring feedback with situation, behavior, and impact.',results:'Measuring whether someone\u2019s silence is costing the team quality or speed.',accountability:'Treating repeated patterns \u2014 not just single incidents \u2014 as worth naming directly.',grow:'Asking a trusted peer what you might be missing about your impact.'};
+ const COMMIT={inclusion:'In the next team meeting, I will notice who hasn\u2019t spoken and invite them in by name.',engage:'In the next difficult conversation, I will name what the person does well before naming what needs to change.',develop:'This week, I will give one piece of feedback using situation, behavior, and impact.',results:'This week, I will ask the team whether a recent silence may have cost us a better decision.',accountability:'This week, I will name one pattern I\u2019ve been letting slide, directly to the person involved.',grow:'This month, I will ask one person I trust what they think I miss about how I show up in meetings.'};
+ const DISC={inclusion:'What\u2019s one concrete habit that would make it easier for a quieter voice to speak up this month?',engage:'When tension shows up, what could you do to keep it a dialogue instead of a lecture or a retreat?',develop:'What would it look like to give structured feedback every week, even for small moments?',results:'What decision on your team could have been better if someone had felt safe to disagree earlier?',accountability:'What pattern have you been letting slide because naming it felt awkward \u2014 and what would naming it look like?',grow:'Who could you ask, this month, what they think you miss about your own impact in the room?'};
+ return {cont:sorted.slice(0,2).map(d=>CONT[d]),start:sorted.slice(-2).reverse().map(d=>START[d]),
+  commit:COMMIT[weakest],disc:DISC[weakest],weakest};
+}
+
+function renderResults(){
+ const score=finalScore(),pk=profileKey(),pr=PROFILES[pk];
+ const bars=DIMS.map(d=>`<div class="bar"><div class="bn">${GROUPNAME[d]} \u00b7 ${LABEL[d]}</div><div class="bt"><div class="bf" style="width:${state.scores[d]}%"></div></div><div style="text-align:right">${state.scores[d]}</div></div>`).join('');
+ const code=b64e(record());
+ const warn=state.saveWarn?`<div class="warn">Your result hasn\u2019t synced to the shared dashboard yet \u2014 this can happen without an account in the right organization. Your score above is safe regardless. Copy the code below and send it to whoever runs the dashboard.</div>`:'';
+ return `<main><div class="stage">
+ <div class="tag">Simulation Complete</div>
+ <div class="finalNum">${score}</div>
+ <div class="sub">Final Psychological Safety Score / 100</div>
+ ${warn}
+ <div class="note">This score comes from your performance across the six pillars below \u2014 psychological safety is the outcome of consistent leadership behavior, not a standalone skill.</div>
+ <div class="profile">${pr.name}</div>
+ <p style="color:#f0e2d6;max-width:60ch">${pr.sum}</p>
+ <div style="margin:22px 0 8px">${bars}</div>
+ <div class="sec"><h4>Strengths</h4><p style="font-size:14.5px;color:#f0e2d6">${pr.str}</p></div>
+ <div class="sec"><h4>Risks to watch</h4><p style="font-size:14.5px;color:#f0e2d6">${pr.risk}</p></div>
+ 
+ <button class="btn" onclick="showPlan()">See Your Action Plan \u2192</button>
+ <button class="btn sec" onclick="restart()" style="margin-left:8px">Restart</button>
+ </div></main>`;
+}
+
+function renderPlan(){
+ const pl=devPlan();
+ return `<main><div class="stage"><div class="card">
+ <div class="tag" style="color:var(--gold)">${esc(state.name||'Your')} \u2014 Action Plan</div>
+ <h2>Your Psychological Safety Action Plan</h2>
+ <div class="focus">
+  <div class="tag">${GROUPNAME[pl.weakest]} \u00b7 Focus Pillar for Group Discussion</div>
+  <b class="name">${LABEL_FULL[pl.weakest]}</b>
+  <div style="font-size:12px;color:var(--dim);margin-bottom:10px">Scored ${state.scores[pl.weakest]}/100 \u2014 the lowest of the six pillars</div>
+  <div style="font-style:italic;border-left:2px solid var(--gold);padding-left:12px;font-size:14px">${pl.disc}</div>
+ </div>
+ <div class="sec"><h4>Continue Doing</h4><ul>${pl.cont.map(t=>`<li>${t}</li>`).join('')}</ul></div>
+ <div class="sec"><h4>Start Doing</h4><ul>${pl.start.map(t=>`<li>${t}</li>`).join('')}</ul></div>
+ <div class="sec"><h4>One Commitment for the Next 30 Days</h4><p class="commit">${pl.commit}</p></div>
+ </div>
+ <button class="btn" onclick="window.print()">Print / Save as PDF</button>
+ <button class="btn sec" onclick="restart()" style="margin-left:8px">Restart</button>
+ </div></main>`;
+}
+
+function renderAdmin(){
+ if(state.admLoading) return `<main><div class="stage"><h1>Admin Dashboard</h1><p>Loading\u2026</p></div></main>`;
+ const imp=`<div class="imp"><b>Add a result manually</b><p style="font-size:12.5px;color:var(--dim)">Paste a backup code received from someone.</p><textarea id="impIn"></textarea><button class="btn sec" onclick="addManual()">Add</button>${state.importMsg?`<div style="font-size:12.5px;margin-top:6px;color:${state.importMsg.ok?'var(--gold)':'#ffe2c4'}">${esc(state.importMsg.m)}</div>`:''}</div>`;
+ const recs=state.admRecs||[];
+ if(!recs.length) return `<main><div class="stage"><h1>Admin Dashboard</h1><p style="color:var(--dim)">No participants have completed the simulation yet.</p><button class="btn sec" onclick="loadAdmin()">\u21bb Refresh</button><button class="btn sec" onclick="restart()" style="margin-left:8px">\u2190 Back</button>${imp}</div></main>`;
+ const n=recs.length;
+ const avg=k=>Math.round(recs.reduce((s,r)=>s+(r.scores?r.scores[k]:0),0)/n);
+ const avgF=Math.round(recs.reduce((s,r)=>s+(r.finalScore||0),0)/n);
+ const rows=recs.slice().sort((a,b)=>(b.ts||0)-(a.ts||0)).map(r=>`<tr><td>${esc(r.name||'Anonymous')}</td><td>${r.finalScore}</td>${DIMS.map(d=>`<td>${r.scores?r.scores[d]:'\u2014'}</td>`).join('')}<td>${PROFILES[r.profile]?PROFILES[r.profile].name:r.profile}</td></tr>`).join('');
+ return `<main><div class="stage" style="max-width:960px">
+ <h1>Admin Dashboard</h1>
+ <div><button class="btn sec" onclick="loadAdmin()">\u21bb Refresh</button><button class="btn sec" onclick="restart()" style="margin-left:8px">\u2190 Back</button></div>
+ ${imp}
+ <div class="stat"><div class="sc"><div class="n">${n}</div><div class="l">Participants</div></div><div class="sc"><div class="n">${avgF}</div><div class="l">Avg. Final</div></div>${DIMS.map(d=>`<div class="sc"><div class="n">${avg(d)}</div><div class="l">${LABEL[d]}</div></div>`).join('')}</div>
+ <table><tr><th>Name</th><th>Final</th>${DIMS.map(d=>`<th>${LABEL[d]}</th>`).join('')}<th>Profile</th></tr>${rows}</table>
+ </div></main>`;
+}
+
+function render(){
+ const el=document.getElementById('app'); let b='';
+ if(state.screen==='intro')b=renderIntro();
+ else if(state.screen==='phase')b=renderPhase();
+ else if(state.screen==='conseq')b=renderConseq();
+ else if(state.screen==='results')b=renderResults();
+ else if(state.screen==='plan')b=renderPlan();
+ else if(state.screen==='admin')b=renderAdmin();
+ el.innerHTML=topbar()+b; window.scrollTo(0,0);
+}
+function start(){const i=document.getElementById('nm');state.name=(i&&i.value.trim())||'Anonymous';state.screen='phase';state.idx=0;render();}
+function pick(i){const p=PHASES[state.idx],c=p.choices[i];DIMS.forEach(d=>state.scores[d]=clamp(state.scores[d]+(c.d[d]||0)));state.log.push({phase:p.id,label:c.l});state.cur=c;state.screen='conseq';render();}
+function next(){state.cur=null; if(state.idx<PHASES.length-1){state.idx++;state.screen='phase';render();} else {state.screen='results';render();}}
+function showPlan(){state.screen='plan';render();}
+function record(){return {name:state.name,ts:Date.now(),scores:{...state.scores},finalScore:finalScore(),profile:profileKey(),log:state.log};}
+async function save(){
+ try{
+  if(!dbNs){ if(window.claude&&window.claude.use){ dbNs=await window.claude.use('db'); } }
+  if(!dbNs) throw new Error('no db');
+  await dbNs.collection('results').add(record());
+ }catch(e){ state.saveWarn=true; if(state.screen==='results')render(); }
+}
+function restart(){state={screen:'intro',name:'',idx:0,scores:{inclusion:60,engage:60,develop:60,results:60,accountability:60,grow:60},log:[],cur:null,saveWarn:false,admLoading:false,admRecs:[],importMsg:null};render();}
+function addManual(){
+ const v=document.getElementById('impIn').value; const rec=b64d(v);
+ if(!rec||typeof rec.finalScore!=='number'||!rec.scores){state.importMsg={ok:false,m:'That code didn\u2019t look right \u2014 check it was copied in full.'};render();return;}
+ state.admRecs=state.admRecs||[]; state.admRecs.push(rec);
+ state.importMsg={ok:true,m:'Added: '+(rec.name||'Anonymous')};
+ render();
+ (async()=>{try{ if(!dbNs&&window.claude&&window.claude.use)dbNs=await window.claude.use('db'); if(dbNs) await dbNs.collection('results').add(rec);}catch(e){}})();
+}
+async function loadAdmin(){
+ state.screen='admin';state.admLoading=true;render();
+ try{
+  if(!dbNs&&window.claude&&window.claude.use) dbNs=await window.claude.use('db');
+  if(!dbNs){state.admRecs=[];state.admLoading=false;render();return;}
+  const snap=await dbNs.collection('results').get();
+  state.admRecs=(snap.docs||[]).map(d=>d.data?d.data():d);
+ }catch(e){ state.admRecs=[]; }
+ state.admLoading=false; render();
+}
+render();
+</script>
+</body></html>

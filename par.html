@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Mike Case — What Do I Do As a Peer?</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#3a0d13;--ink2:#5c1420;--panel:#4a1520;--panel2:#5c1c28;--paper:#f5ece0;--dim:#d9b6ab;--gold:#f2a71b;--line:rgba(245,236,224,.16);--lineS:rgba(245,236,224,.32);color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0)}
+body{margin:0;background:linear-gradient(150deg,var(--ink),var(--ink2) 60%,#42111a);color:var(--paper);font-family:Inter,sans-serif;line-height:1.55;padding-top:env(safe-area-inset-top,0);padding-bottom:env(safe-area-inset-bottom,0);min-height:100vh}
+h1,h2,.serif{font-family:Fraunces,serif}
+.top{position:sticky;top:0;z-index:10;padding:14px 20px;padding-top:calc(14px + env(safe-area-inset-top,0));background:rgba(58,13,19,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:16px;justify-content:space-between}
+.brand{font-size:13px;color:var(--dim)}.brand b{color:var(--paper)}
+.meter{flex:1;max-width:340px;height:7px;background:rgba(245,236,224,.15);position:relative}
+.meter i{display:block;height:100%;background:var(--gold);transition:width .4s}
+.meterNum{font-family:Fraunces,serif;font-weight:600;min-width:40px;text-align:right}
+.admBtn{font-size:12px;color:var(--paper);border:1px solid var(--lineS);padding:6px 10px;background:none;cursor:pointer}
+main{display:flex;justify-content:center;padding:44px 20px 90px}
+.stage{max-width:660px;width:100%}
+h1{font-size:30px;margin:4px 0 22px}
+.tag{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--dim)}
+.narrative p{font-size:16.5px;color:#f0e2d6;max-width:60ch;margin:0 0 14px}
+em{color:var(--paper);font-style:italic}
+.div{height:1px;background:var(--line);margin:28px 0}
+.choice{display:flex;gap:14px;border:1px solid var(--line);border-left:3px solid var(--lineS);background:rgba(0,0,0,.14);padding:16px 18px;margin-bottom:10px;width:100%;text-align:left;cursor:pointer;color:var(--paper);font-family:inherit}
+.choice:hover{border-left-color:var(--gold);background:rgba(0,0,0,.26)}
+.cl{font-family:Fraunces,serif;color:var(--gold);font-size:19px;min-width:20px}
+.clabel{font-weight:600;margin-bottom:3px}
+.ctext{font-size:14px;color:#e6cfc2}
+.conseq{border:1px solid var(--lineS);background:rgba(0,0,0,.22);padding:24px}
+.conseq h4{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--dim);margin:0 0 6px}
+.conseq p{margin:0 0 16px;font-size:14.5px;color:#f0e2d6}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:6px}
+.chip{font-size:12px;padding:5px 9px;border:1px solid var(--lineS);display:inline-flex;gap:6px;align-items:center;color:var(--paper)}
+.chip.on{border-color:rgba(242,167,27,.6);background:rgba(242,167,27,.1)}
+.chip.muted{color:var(--dim);font-style:italic}
+.impLabel{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--dim);margin:16px 0 8px}
+.btn{background:var(--gold);color:#2a0a0e;border:none;padding:12px 24px;font-weight:700;cursor:pointer;margin-top:20px;font-size:14.5px}
+.btn.sec{background:none;color:var(--paper);border:1px solid var(--lineS)}
+input[type=text]{width:100%;max-width:340px;background:rgba(0,0,0,.2);border:1px solid var(--lineS);color:var(--paper);padding:11px 13px;margin-bottom:20px;font-size:16px}
+.fw{border:1px solid var(--lineS);background:rgba(0,0,0,.15);padding:22px;margin:8px 0 28px}
+.fwGrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
+@media(max-width:700px){.fwGrid{grid-template-columns:1fr}}
+.badge{display:inline-block;background:var(--gold);color:#2a0a0e;font-weight:700;font-size:10.5px;letter-spacing:.06em;padding:3px 9px;margin-bottom:10px;text-transform:uppercase}
+.fwCol .tagline{font-size:9.5px;color:var(--dim);text-transform:none;letter-spacing:0;margin-left:6px}
+.fwItem{font-size:13px;color:#e6cfc2;margin-bottom:10px;padding-left:10px;border-left:2px solid var(--line)}
+.fwItem.mute{opacity:.7}
+.fwItem b{display:block;color:var(--paper);font-size:12.5px;margin-bottom:2px}
+.fwItem .ask{display:block;margin-top:4px;font-style:italic;color:var(--dim);font-size:11.5px}
+.note{font-size:13px;color:var(--dim);border-left:2px solid var(--gold);padding-left:12px;max-width:58ch;margin:14px 0}
+.finalNum{font-family:Fraunces,serif;font-size:76px;font-weight:600;line-height:1;margin:6px 0 2px}
+.sub{color:var(--dim);font-size:12px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:26px}
+.bar{display:grid;grid-template-columns:170px 1fr 32px;gap:12px;align-items:center;margin-bottom:12px}
+.bn{font-size:12px;color:var(--dim)}
+.bt{height:6px;background:rgba(245,236,224,.15)}.bf{height:100%;background:var(--gold)}
+.profile{font-family:Fraunces,serif;color:var(--gold);font-size:22px;margin:20px 0 10px}
+.focus{border:1px solid var(--gold);background:rgba(242,167,27,.1);padding:18px 20px;margin:22px 0}
+.focus b.name{display:block;font-family:Fraunces,serif;font-size:20px;margin:8px 0 6px}
+.card{border:1px solid var(--lineS);padding:28px;background:rgba(0,0,0,.18)}
+.sec{margin-bottom:20px}
+.sec h4{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--dim);margin:0 0 8px}
+.sec ul{margin:0;padding-left:18px}
+.sec li{font-size:14.5px;color:#f0e2d6;margin-bottom:6px}
+.commit{font-style:italic;border-left:2px solid var(--gold);padding-left:12px;font-size:15px}
+.stat{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin:20px 0}
+.sc{background:var(--ink);padding:14px}
+.sc .n{font-family:Fraunces,serif;font-size:22px}
+.sc .l{font-size:10px;text-transform:uppercase;color:var(--dim);margin-top:3px}
+table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:30px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)}
+th{color:var(--dim);text-transform:uppercase;font-size:10px}
+.imp{border:1px solid var(--lineS);padding:16px 18px;margin:22px 0}
+.imp textarea{width:100%;min-height:60px;background:rgba(0,0,0,.2);border:1px solid var(--lineS);color:var(--paper);padding:8px;margin:8px 0}
+.warn{border:1px solid rgba(255,180,120,.5);background:rgba(255,180,120,.1);color:#ffe2c4;font-size:13px;padding:12px 14px;margin-bottom:20px}
+@media print{.top,.btn{display:none!important}body{background:#fff;color:#111}.card{border-color:#999;background:#fff}}
+</style>
+</head>
+<body><div id="app"></div>
+<script>
+const DIMS=['inclusion','engage','develop','results','accountability','grow'];
+const LABEL={inclusion:'Foster Inclusion',engage:'Engage & Inspire',develop:'Develop Talent',results:'Deliver Results',accountability:'Promote Accountability',grow:'Grow Yourself'};
+const LABEL_FULL={inclusion:'Build a Diverse Team and Foster Inclusion',engage:'Engage and Inspire',develop:'Develop Talent',results:'Deliver Results',accountability:'Promote Accountability',grow:'Continue to Grow Yourself'};
+const GROUPNAME={inclusion:'Empower',engage:'Empower',develop:'Empower',results:'Elevate',accountability:'Elevate',grow:'Elevate'};
+const EXCEL=[
+ {n:'Live Your Passion for the Brand',w:'Connects everyday work to adidas\u2019 purpose, products, consumers, and culture \u2014 in actions, not just words.',a:'Do I feel more connected to adidas because of how the people around me show up?'},
+ {n:'Act Like It\u2019s Your Own Company',w:'Takes real ownership of outcomes, balancing impact on people and the business.',a:'Do I take ownership for outcomes even when it\u2019s uncomfortable, even without a title?'},
+ {n:'Think Bigger and Beyond',w:'Looks ahead, challenges the way things are usually done, and makes room for better solutions.',a:'Am I helping the team look ahead, or only reacting to what\u2019s in front of us?'}
+];
+const SCORED_WHAT={inclusion:'Helps create an environment where different perspectives are genuinely valued and included.',engage:'Brings energy and clarity that helps the people around you do their best work.',develop:'Actively supports a colleague\u2019s growth through honest, specific feedback.',results:'Helps turn good ideas into outcomes by making space for them to be heard.',accountability:'Names issues constructively instead of letting them slide, even without formal authority.',grow:'Stays open to feedback and curious about your own blind spots.'};
+
+const PHASES=[
+{id:1,tag:'1 of 4',title:'You Were In the Room',
+ narrative:["You\u2019re not the manager. But you were in the meeting when Mike laughed off Alex\u2019s idea \u2014 <em>\u201Cwe actually tried that years ago, I guess every new hire has to rediscover our old mistakes\u201D</em> \u2014 and you saw Alex go quiet for the rest of the meeting.",
+ "No one else seems to have noticed, or maybe they noticed and decided not to act. You don\u2019t have a leadership title here \u2014 but it\u2019s clear this landed on Alex.",
+ "You have a short window, still inside the meeting, to decide if you do anything."],
+ choices:[
+ {k:'A',l:'Support Alex\u2019s idea right there, without confronting Mike directly',t:'\u201CActually, I think there\u2019s something here \u2014 Alex, can you say more about how this would\u2019ve helped with last month\u2019s issue?\u201D',
+  imm:'The conversation returns to Alex\u2019s idea, without naming Mike\u2019s comment. Alex seems a little more at ease continuing.',
+  del:'Alex remembers that someone pulled the idea back to the table \u2014 but Mike\u2019s comment itself was never named by anyone.',
+  d:{inclusion:6,engage:4,develop:5,results:3,accountability:1,grow:2},
+  why:'This gives Alex space back without turning the meeting into a confrontation that isn\u2019t yours to lead \u2014 a real way to act without formal authority. The cost is that the pattern itself stays unnamed, and stays easier to repeat.'},
+ {k:'B',l:'Stay quiet in the meeting, but check in with Alex privately afterward',t:'You say nothing in the moment. Later, you message Alex: \u201CSaw what happened earlier. Your idea made sense to me.\u201D',
+  imm:'Alex replies with a brief but genuine-sounding \u201Cthanks.\u201D',
+  del:'Alex knows at least one person noticed. But no one in the room saw it happen, so the group\u2019s norm doesn\u2019t shift.',
+  d:{inclusion:3,engage:2,develop:1,results:0,accountability:-1,grow:2},
+  why:'A private show of support is real and low-risk \u2014 a solid first step if you don\u2019t want to put Alex further in the spotlight. The cost is that it\u2019s invisible to the rest of the team, who still don\u2019t know that comment bothered anyone.'},
+ {k:'C',l:'Assume the manager will notice and handle it \u2014 not your role to fix',t:'You figure that stepping in isn\u2019t your place; your manager is in the room and can notice on their own.',
+  imm:'The meeting continues. No one else comments.',
+  del:'Weeks later, you notice Alex barely speaks up in meetings anymore \u2014 and you can\u2019t say whether anyone, including you, ever did anything about it.',
+  d:{inclusion:-4,engage:-2,develop:-1,results:-1,accountability:-4,grow:-1},
+  why:'It\u2019s true that publicly correcting a colleague isn\u2019t the job of whoever doesn\u2019t run the meeting \u2014 that hesitation is reasonable. But psychological safety doesn\u2019t depend only on who has a title: waiting for someone else is also a choice, and it has a cost.'}]},
+
+{id:2,tag:'2 of 4',title:'Mike Interrupts Again',
+ narrative:["Two weeks later, Mike cuts Alex off mid-explanation \u2014 again. His suggestion isn\u2019t even wrong, but it\u2019s the second time this month. Your manager is in the meeting and doesn\u2019t react.",
+ "You\u2019re Alex\u2019s peer, not Mike\u2019s manager. Still, what you do in the next few seconds shapes what the room learns is normal."],
+ choices:[
+ {k:'A',l:'Step in, lightly, as a peer',t:'\u201CHold on, let Alex finish \u2014 I think there\u2019s more there.\u201D',
+  imm:'Mike stops. \u201CMy bad,\u201D he says. Alex finishes the point.',
+  del:'Alex notices that someone other than the manager noticed and acted. Mike is slightly more careful around you too, afterward.',
+  d:{inclusion:7,engage:2,develop:2,results:2,accountability:5,grow:1},
+  why:'A peer stepping in, not just the manager, sends a strong signal that this doesn\u2019t depend only on who has a title. The risk is that it can look like you\u2019re publicly correcting a senior colleague, which not everyone in the room may read well.'},
+ {k:'B',l:'Let it pass, but check with Alex about whether they want support raising it with the manager',t:'After the meeting: \u201CI noticed Mike cut you off again. Want me to mention it to our manager with you, or would you rather handle it your own way?\u201D',
+  imm:'Alex is relieved someone noticed, but hesitates: \u201CI don\u2019t know if I want to make this a whole thing.\u201D',
+  del:'The decision correctly stays with Alex \u2014 but the pattern keeps happening while they decide.',
+  d:{inclusion:4,engage:3,develop:3,results:2,accountability:3,grow:3},
+  why:'Asking Alex, instead of deciding for them, respects the autonomy of the person most affected \u2014 exactly the kind of support any peer can offer. The cost is that a solution may take longer while the pattern keeps repeating.'},
+ {k:'C',l:'Message the manager directly about it, without talking to Alex first',t:'After the meeting you write to the manager: \u201CNoticed Mike cut Alex off again, thought you should know.\u201D',
+  imm:'The manager thanks you for the flag. Alex doesn\u2019t know this conversation happened.',
+  del:'If Alex finds out later, they may feel their situation became someone else\u2019s topic without being consulted \u2014 even with good intent on your part.',
+  d:{inclusion:1,engage:0,develop:1,results:1,accountability:2,grow:0},
+  why:'Flagging it to the manager is a legitimate move and can speed up a real correction. The cost is deciding this without including Alex, who arguably has the most say in how and when their own situation gets raised.'}]},
+
+{id:3,tag:'3 of 5',title:'Telling Mike Yourself',
+ narrative:["You decide the pattern is clear enough that Mike should hear it directly from a peer, not just from a manager. You\u2019re weighing tone and setting \u2014 something fair, respectful, and that actually gets through.",
+ "Every option you\u2019re considering has a catch, even though none of them look outright wrong."],
+ choices:[
+ {k:'A',l:'Post a general reminder in the team channel, without naming him',t:'\u201CFriendly reminder: let\u2019s all make sure we let people finish their thoughts before jumping in \u2014 goes for all of us :)\u201D you post in the team channel.',
+  imm:'A few people react with a thumbs up. Mike doesn\u2019t respond at all.',
+  del:'Because it was addressed to everyone, Mike can reasonably assume it wasn\u2019t about him \u2014 and the specific pattern with Alex goes unaddressed.',
+  d:{inclusion:-1,engage:0,develop:-2,results:0,accountability:-4,grow:-1},
+  why:'A public, general reminder avoids singling anyone out, which can feel like the fairer, lower-risk option. The cost is that vague, addressed-to-everyone feedback lets the one person it\u2019s actually about opt out of hearing it \u2014 and it does nothing for Alex, who watched it happen and knows exactly who it was about.'},
+ {k:'B',l:'Tell him \u201Ca few people have noticed,\u201D without saying who',t:'\u201CHey, a few people have noticed you cutting folks off in meetings \u2014 might be worth watching.\u201D',
+  imm:'Mike looks caught off guard. \u201CWho said that?\u201D he asks. You don\u2019t answer.',
+  del:'Mike spends the next few days wondering who\u2019s talking about him behind his back, more focused on that than on the actual behavior.',
+  d:{inclusion:0,engage:-3,develop:-2,results:0,accountability:1,grow:-1},
+  why:'Citing \u201Ca few people\u201D can feel like it adds weight, and protects any one person from being identified as the source. But invoking an anonymous collective makes the feedback feel like it\u2019s coming from everywhere and nowhere \u2014 it\u2019s hard for Mike to actually engage with, and can read as being ganged up on rather than given honest, ownable feedback.'},
+ {k:'C',l:'Bring it up casually at the team happy hour, so it feels lower-stakes',t:'At drinks after work, you mention it lightly: \u201CHaha, you really shut Alex down earlier, huh?\u201D',
+  imm:'Mike laughs it off in the moment: \u201CYeah, yeah, my bad.\u201D The conversation moves on immediately.',
+  del:'Because it was framed as a joke in a social setting, Mike doesn\u2019t register it as feedback at all \u2014 and nothing changes.',
+  d:{inclusion:-1,engage:1,develop:-3,results:-1,accountability:-3,grow:0},
+  why:'A casual, social moment can feel like the least confrontational way to raise something, and sometimes lands better than a formal sit-down. The cost is that wrapping real feedback in a joke, in a space that\u2019s implicitly off-duty, makes it easy for the other person not to take it seriously \u2014 and mixes a corrective conversation into a space that\u2019s supposed to be free of exactly that.'}]},
+
+{id:4,tag:'4 of 5',title:'Trying to Help',
+ narrative:["You finally decide to talk to Alex about all of this. Your intentions are good \u2014 but the three easiest ways to open this conversation share one problem, even though none of them looks wrong at first glance."],
+ choices:[
+ {k:'A',l:'Minimize it, to reassure',t:'\u201CDon\u2019t worry about it, Mike\u2019s like that with everyone, it\u2019s not personal.\u201D',
+  imm:'Alex nods, but doesn\u2019t seem more relieved \u2014 just ready to drop the subject.',
+  del:'Alex learns that raising this again will likely be met with \u201Cit\u2019s not a big deal\u201D \u2014 which discourages them from bringing it up if it happens again.',
+  d:{inclusion:-3,engage:-1,develop:-2,results:0,accountability:-2,grow:-1},
+  why:'This feels comforting and tries to lighten the moment \u2014 a genuine intention. But minimizing invalidates Alex\u2019s experience before you\u2019ve even really heard it \u2014 deciding it\u2019s \u201Cnot personal\u201D isn\u2019t your call to make for them.'},
+ {k:'B',l:'Center a similar experience of your own',t:'\u201COh, I know exactly how that feels, he does that to me too, this one time...\u201D \u2014 and you keep going with your own story.',
+  imm:'Alex listens politely, but barely gets to return to their own point.',
+  del:'Alex leaves the conversation feeling like they came to vent and ended up hearing about someone else\u2019s experience.',
+  d:{inclusion:-2,engage:-1,develop:-1,results:0,accountability:-1,grow:-2},
+  why:'Sharing a similar experience can genuinely build connection and show Alex they\u2019re not alone. The problem is when it takes over the space \u2014 Alex\u2019s psychological safety depends on being heard, not on you feeling understood.'},
+ {k:'C',l:'Offer to fix it for them, without asking first',t:'\u201CLeave it with me, I\u2019ll talk to Mike about this directly.\u201D',
+  imm:'Alex says \u201Cokay,\u201D a little uncertain, without having asked for this.',
+  del:'If the conversation with Mike doesn\u2019t go well, Alex may end up in the middle of a tension they didn\u2019t choose \u2014 and without being consulted on how they wanted their own situation handled.',
+  d:{inclusion:-1,engage:0,develop:-2,results:0,accountability:1,grow:-1},
+  why:'Offering to take concrete action comes from real care, and is sometimes exactly what someone wants. The problem is assuming that without asking \u2014 it takes away Alex\u2019s choice over whether and how their situation gets addressed by someone else.'}]},
+
+{id:5,tag:'5 of 5',title:'When (and How) to Escalate',
+ narrative:["The pattern with Mike continues, week after week. Alex still hasn\u2019t formally raised it. You notice it\u2019s also costing the team \u2014 good ideas aren\u2019t reaching the table, and some technical calls are slower or worse without Alex\u2019s input.",
+ "There\u2019s more than one reasonable way to take this forward \u2014 and each comes with a different cost."],
+ choices:[
+ {k:'A',l:'Raise it now, with what you\u2019ve seen, even without Alex asking',t:'You set up time with your manager and describe the pattern you\u2019ve observed, being clear it\u2019s your own read, not Alex\u2019s.',
+  imm:'The manager thanks you and says they\u2019ll pay closer attention.',
+  del:'Something shifts faster \u2014 but Alex may feel surprised to learn their situation was raised without them choosing the timing.',
+  d:{inclusion:3,engage:2,develop:2,results:4,accountability:6,grow:2},
+  why:'Acting on what you\u2019ve seen, and being transparent that it\u2019s your own read, is a legitimate way to keep a real pattern from waiting too long \u2014 and it connects directly to the quality of the team\u2019s decisions. The cost is deciding the timing for Alex, even with good intent.'},
+ {k:'B',l:'Wait for an even clearer pattern before taking it anywhere',t:'You decide you\u2019re still not certain enough, and prefer to keep watching a while longer.',
+  imm:'Nothing changes in the short term.',
+  del:'The pattern repeats once more, in a similar way, before anything is said.',
+  d:{inclusion:-2,engage:-1,develop:-1,results:-2,accountability:-4,grow:0},
+  why:'Wanting certainty before acting is a genuine form of care and avoids false alarms. The risk is that you\u2019ve already seen this pattern repeat more than once \u2014 waiting for \u201Ceven clearer\u201D can become a way of postponing indefinitely.'},
+ {k:'C',l:'Use an indirect channel \u2014 an engagement survey or anonymous feedback tool',t:'You log what you observed in the company\u2019s anonymous feedback channel, without naming specific people.',
+  imm:'It gets recorded, without directly exposing anyone.',
+  del:'It may take longer to turn into concrete action, and it\u2019s unclear whether anyone will connect that entry to Alex\u2019s situation.',
+  d:{inclusion:1,engage:1,develop:0,results:1,accountability:1,grow:2},
+  why:'An indirect channel is a real tool when a direct conversation feels too risky, and it doesn\u2019t require anyone to expose themselves. The cost is speed, and the chance the signal gets lost among other entries.'}]}
+];
+
+const PROFILES={
+ champion:{name:'Consistent Psychological Safety Ally',sum:'Even without a leadership title, you acted consistently, respectfully, and specifically \u2014 protecting space for whoever had less power in the room, even when it wasn\u2019t technically your job.',str:'Notices patterns early. Acts with care for the other person\u2019s autonomy. Doesn\u2019t wait passively for whoever has the title.',risk:'Watch out for taking on the role of \u201Cfixing it\u201D for others \u2014 ask before acting on someone\u2019s behalf.',foc:'Keep asking what the affected person actually wants, before deciding for them.'},
+ inconsistent:{name:'Well-Meaning but Inconsistent Peer',sum:'You care, but your responses varied \u2014 sometimes real, careful support, other times avoidance or making the moment about you.',str:'Genuine care for colleagues.',risk:'Inconsistency can be confusing for someone who needs predictable, not occasional, support.',foc:'Practice asking \u201Chow can I support you\u201D before acting, consistently.'},
+ avoider:{name:'Cautious Bystander',sum:'You tend to wait for formal leadership to fix things, even when you sense something is wrong. That\u2019s understandable \u2014 it\u2019s not your title \u2014 but it has a real cost for whoever is affected.',str:'Respects hierarchy and avoids overstepping.',risk:'Silence can read as agreement, even without meaning to.',foc:'Practice small, private shows of support as a first step, without waiting for permission.'},
+ silencer:{name:'Unintended Reinforcer',sum:'Your choices \u2014 minimizing, centering yourself, acting without asking \u2014 likely made it harder, without meaning to, for Alex to feel truly heard. This is common among well-intentioned colleagues.',str:'Real desire to help.',risk:'Good intentions don\u2019t guarantee the affected person feels supported.',foc:'Practice listening more and asking before acting or sharing your own experience.'}
+};
+
+let state={screen:'intro',name:'',idx:0,scores:{inclusion:60,engage:60,develop:60,results:60,accountability:60,grow:60},log:[],cur:null,saveWarn:false,admLoading:false,admRecs:[],importMsg:null};
+let dbNs=null;
+
+function clamp(v){return Math.max(0,Math.min(100,v));}
+function esc(s){const d=document.createElement('div');d.innerText=s==null?'':s;return d.innerHTML;}
+function finalScore(sc){sc=sc||state.scores;return Math.round(DIMS.reduce((s,c)=>s+sc[c],0)/DIMS.length);}
+function profileKey(sc){sc=sc||state.scores;const s=finalScore(sc);
+ if(s>=80)return 'champion'; if(s>=60)return 'inconsistent';
+ return (sc.engage<=sc.accountability)?'avoider':'silencer';}
+function b64e(o){try{return btoa(unescape(encodeURIComponent(JSON.stringify(o))));}catch(e){return '';}}
+function b64d(s){try{return JSON.parse(decodeURIComponent(escape(atob(s.trim()))));}catch(e){return null;}}
+function copy(t,el){const done=()=>{if(el){const o=el.textContent;el.textContent='Copied \u2713';setTimeout(()=>el.textContent=o,1400);}};
+ if(navigator.clipboard){navigator.clipboard.writeText(t).then(done).catch(()=>{});} }
+
+function topbar(){
+ if(state.screen==='intro'||state.screen==='admin')
+  return `<div class="top"><div class="brand">The Mike Case <span style="color:var(--dim)">/</span> <b>As a Peer</b></div></div>`;
+ const s=finalScore();
+ return `<div class="top"><div class="tag" style="min-width:70px">${PHASES[state.idx].tag}</div><div class="meter"><i style="width:${s}%"></i></div><div class="meterNum">${s}%</div></div>`;
+}
+
+function renderIntro(){
+ const excelHtml=EXCEL.map(x=>`<div class="fwItem mute"><b>${x.n}</b>${x.w}<span class="ask">\u201C${x.a}\u201D</span></div>`).join('');
+ const empHtml=['inclusion','engage','develop'].map(d=>`<div class="fwItem"><b>${LABEL_FULL[d]}</b>${SCORED_WHAT[d]}</div>`).join('');
+ const eleHtml=['results','accountability','grow'].map(d=>`<div class="fwItem"><b>${LABEL_FULL[d]}</b>${SCORED_WHAT[d]}</div>`).join('');
+ return `<main><div class="stage">
+ <div class="tag" style="margin-bottom:8px">A Simulation for Team Members</div>
+ <h1>The Mike Case — What If You\u2019re Not the One Leading?</h1>
+ <p style="font-size:17px;color:#f0e2d6;max-width:56ch">You\u2019re not the manager. But you were in the room when Mike, a senior colleague, unintentionally made it harder for Alex to be heard. Psychological safety doesn\u2019t only depend on who has a title \u2014 it also depends on what peers do, or don\u2019t do.</p>
+ <div class="fw">
+  <p style="font-size:13px;color:var(--dim);margin:0 0 16px">Even without formal authority, your choices are scored against the same adidas Leadership Framework. Psychological safety affects team performance \u2014 so <b style="color:var(--paper)">Deliver Results</b> factors in here too.</p>
+  <div class="fwGrid">
+   <div class="fwCol"><span class="badge">Excel</span><span class="tagline">shown for context, not scored here</span>${excelHtml}</div>
+   <div class="fwCol"><span class="badge">Empower</span><span class="tagline">scored in this simulation</span>${empHtml}</div>
+   <div class="fwCol"><span class="badge">Elevate</span><span class="tagline">scored in this simulation</span>${eleHtml}</div>
+  </div>
+ </div>
+ <p style="font-size:14px;color:var(--dim);max-width:56ch">5 decisions \u2014 still faster than the leadership version. Most have no clearly perfect option.</p>
+ <label style="display:block;font-size:12px;text-transform:uppercase;color:var(--dim);margin:20px 0 6px">Your name</label>
+ <input type="text" id="nm" placeholder="e.g. Jordan Lee" onkeydown="if(event.key==='Enter')start()">
+ <div><button class="btn" onclick="start()">Begin the Simulation</button></div>
+ </div></main>`;
+}
+
+function renderPhase(){
+ const p=PHASES[state.idx];
+ const nar=p.narrative.map(x=>`<p>${x}</p>`).join('');
+ const ch=p.choices.map((c,i)=>`<button class="choice" onclick="pick(${i})"><div class="cl">${c.k}</div><div><div class="clabel">${esc(c.l)}</div><div class="ctext">${c.t}</div></div></button>`).join('');
+ return `<main><div class="stage"><h1>${esc(p.title)}</h1><div class="narrative">${nar}</div><div class="div"></div><div class="tag" style="margin-bottom:14px">What do you do?</div>${ch}</div></main>`;
+}
+
+function renderConseq(){
+ const p=PHASES[state.idx],c=state.cur;
+ const on=DIMS.filter(d=>(c.d[d]||0)>0),off=DIMS.filter(d=>(c.d[d]||0)<=0);
+ const chip=(d,active)=>`<span class="chip ${active?'on':''}">${GROUPNAME[d]} \u00b7 ${LABEL[d]}</span>`;
+ const last=state.idx===PHASES.length-1;
+ return `<main><div class="stage"><div class="tag" style="margin-bottom:14px">${p.tag} \u2014 Outcome</div>
+ <div class="conseq">
+ <div class="tag" style="color:var(--gold);margin-bottom:10px">You chose: ${c.k}. ${esc(c.l)}</div>
+ <h4>Immediate reaction</h4><p>${c.imm}</p>
+ <h4>Down the line</h4><p>${c.del}</p>
+ <div class="impLabel">Pillars this choice leaned into</div>
+ <div class="chips">${on.length?on.map(d=>chip(d,true)).join(''):'<span class="chip muted">None, this time</span>'}</div>
+ <div class="impLabel">Pillars left on the table this time</div>
+ <div class="chips">${off.length?off.map(d=>chip(d,false)).join(''):'<span class="chip muted">None, this time</span>'}</div>
+ <h4 style="margin-top:18px">Why</h4><p style="margin:0">${c.why}</p>
+ </div>
+ <button class="btn" onclick="next()">${last?'See Your Results':'Continue \u2192'}</button>
+ </div></main>`;
+}
+
+function devPlan(){
+ const sorted=DIMS.slice().sort((a,b)=>state.scores[b]-state.scores[a]);
+ const weakest=sorted[sorted.length-1];
+ const CONT={inclusion:'Handing the floor back to quieter colleagues when you notice space closing.',engage:'Bringing lightness and trust into tense moments between colleagues.',develop:'Offering specific, not just generic, support to whoever needs it.',results:'Noticing when a colleague\u2019s silence may be costing the team quality.',accountability:'Naming patterns, even without a title, instead of waiting for whoever has one.',grow:'Asking before acting on someone else\u2019s behalf.'};
+ const START={inclusion:'Actively inviting quieter colleagues back into the conversation.',engage:'Using tension as a chance for connection, not just discomfort to avoid.',develop:'Offering concrete support by asking what the person actually needs.',results:'Connecting your support to better technical calls for the team.',accountability:'Raising repeated patterns, even when it\u2019s not formally your role.',grow:'Asking a trusted colleague whether your way of helping actually helps.'};
+ const COMMIT={inclusion:'In the next meeting, I will notice who went quiet and bring them back into the conversation.',engage:'Next time a colleague goes through something hard, I will ask how to support before acting.',develop:'This week, I will offer one piece of specific, not generic, support to a colleague.',results:'This week, I will notice whether any silence on the team may be costing us a better decision.',accountability:'This week, I will name one pattern I\u2019ve been letting slide, even if it\u2019s not formally my role.',grow:'This month, I will ask a colleague whether my way of supporting them actually helps.'};
+ const DISC={inclusion:'What concrete habit would help a quieter colleague feel invited to speak up?',engage:'How do you tell the difference between supporting someone and centering the conversation on yourself?',develop:'How could you practice asking \u201Chow can I help\u201D before acting on someone\u2019s behalf?',results:'What decision on your team could have been better if someone had felt safe to speak up earlier?',accountability:'What pattern between colleagues have you been letting slide because it\u2019s not \u201Cformally your job\u201D?',grow:'Who could you ask whether your way of supporting people is actually useful?'};
+ return {cont:sorted.slice(0,2).map(d=>CONT[d]),start:sorted.slice(-2).reverse().map(d=>START[d]),
+  commit:COMMIT[weakest],disc:DISC[weakest],weakest};
+}
+
+function renderResults(){
+ const score=finalScore(),pk=profileKey(),pr=PROFILES[pk];
+ const bars=DIMS.map(d=>`<div class="bar"><div class="bn">${GROUPNAME[d]} \u00b7 ${LABEL[d]}</div><div class="bt"><div class="bf" style="width:${state.scores[d]}%"></div></div><div style="text-align:right">${state.scores[d]}</div></div>`).join('');
+ const code=b64e(record());
+ const warn=state.saveWarn?`<div class="warn">Your result hasn\u2019t synced to the shared dashboard yet. Your score above is safe regardless. Copy the code below and send it to whoever runs the dashboard.</div>`:'';
+ return `<main><div class="stage">
+ <div class="tag">Simulation Complete</div>
+ <div class="finalNum">${score}</div>
+ <div class="sub">Final Psychological Safety Score / 100</div>
+ ${warn}
+ <div class="note">This score comes from your performance across the six pillars below \u2014 psychological safety is something any colleague can strengthen or weaken, with or without a leadership title.</div>
+ <div class="profile">${pr.name}</div>
+ <p style="color:#f0e2d6;max-width:60ch">${pr.sum}</p>
+ <div style="margin:22px 0 8px">${bars}</div>
+ <div class="sec"><h4>Strengths</h4><p style="font-size:14.5px;color:#f0e2d6">${pr.str}</p></div>
+ <div class="sec"><h4>Risks to watch</h4><p style="font-size:14.5px;color:#f0e2d6">${pr.risk}</p></div>
+ 
+ <button class="btn" onclick="showPlan()">See Your Action Plan \u2192</button>
+ <button class="btn sec" onclick="restart()" style="margin-left:8px">Restart</button>
+ </div></main>`;
+}
+
+function renderPlan(){
+ const pl=devPlan();
+ return `<main><div class="stage"><div class="card">
+ <div class="tag" style="color:var(--gold)">${esc(state.name||'Your')} \u2014 Action Plan</div>
+ <h2>Your Action Plan as a Peer</h2>
+ <div class="focus">
+  <div class="tag">${GROUPNAME[pl.weakest]} \u00b7 Focus Pillar for Group Discussion</div>
+  <b class="name">${LABEL_FULL[pl.weakest]}</b>
+  <div style="font-size:12px;color:var(--dim);margin-bottom:10px">Scored ${state.scores[pl.weakest]}/100 \u2014 the lowest of the six pillars</div>
+  <div style="font-style:italic;border-left:2px solid var(--gold);padding-left:12px;font-size:14px">${pl.disc}</div>
+ </div>
+ <div class="sec"><h4>Continue Doing</h4><ul>${pl.cont.map(t=>`<li>${t}</li>`).join('')}</ul></div>
+ <div class="sec"><h4>Start Doing</h4><ul>${pl.start.map(t=>`<li>${t}</li>`).join('')}</ul></div>
+ <div class="sec"><h4>One Commitment for the Next 30 Days</h4><p class="commit">${pl.commit}</p></div>
+ </div>
+ <button class="btn" onclick="window.print()">Print / Save as PDF</button>
+ <button class="btn sec" onclick="restart()" style="margin-left:8px">Restart</button>
+ </div></main>`;
+}
+
+function renderAdmin(){
+ if(state.admLoading) return `<main><div class="stage"><h1>Admin Dashboard</h1><p>Loading\u2026</p></div></main>`;
+ const imp=`<div class="imp"><b>Add a result manually</b><p style="font-size:12.5px;color:var(--dim)">Paste a backup code received from someone.</p><textarea id="impIn"></textarea><button class="btn sec" onclick="addManual()">Add</button>${state.importMsg?`<div style="font-size:12.5px;margin-top:6px;color:${state.importMsg.ok?'var(--gold)':'#ffe2c4'}">${esc(state.importMsg.m)}</div>`:''}</div>`;
+ const recs=state.admRecs||[];
+ if(!recs.length) return `<main><div class="stage"><h1>Admin Dashboard</h1><p style="color:var(--dim)">No participants have completed the simulation yet.</p><button class="btn sec" onclick="loadAdmin()">\u21bb Refresh</button><button class="btn sec" onclick="restart()" style="margin-left:8px">\u2190 Back</button>${imp}</div></main>`;
+ const n=recs.length;
+ const avg=k=>Math.round(recs.reduce((s,r)=>s+(r.scores?r.scores[k]:0),0)/n);
+ const avgF=Math.round(recs.reduce((s,r)=>s+(r.finalScore||0),0)/n);
+ const rows=recs.slice().sort((a,b)=>(b.ts||0)-(a.ts||0)).map(r=>`<tr><td>${esc(r.name||'Anonymous')}</td><td>${r.finalScore}</td>${DIMS.map(d=>`<td>${r.scores?r.scores[d]:'\u2014'}</td>`).join('')}<td>${PROFILES[r.profile]?PROFILES[r.profile].name:r.profile}</td></tr>`).join('');
+ return `<main><div class="stage" style="max-width:960px">
+ <h1>Admin Dashboard</h1>
+ <div><button class="btn sec" onclick="loadAdmin()">\u21bb Refresh</button><button class="btn sec" onclick="restart()" style="margin-left:8px">\u2190 Back</button></div>
+ ${imp}
+ <div class="stat"><div class="sc"><div class="n">${n}</div><div class="l">Participants</div></div><div class="sc"><div class="n">${avgF}</div><div class="l">Avg. Final</div></div>${DIMS.map(d=>`<div class="sc"><div class="n">${avg(d)}</div><div class="l">${LABEL[d]}</div></div>`).join('')}</div>
+ <table><tr><th>Name</th><th>Final</th>${DIMS.map(d=>`<th>${LABEL[d]}</th>`).join('')}<th>Profile</th></tr>${rows}</table>
+ </div></main>`;
+}
+
+function render(){
+ const el=document.getElementById('app'); let b='';
+ if(state.screen==='intro')b=renderIntro();
+ else if(state.screen==='phase')b=renderPhase();
+ else if(state.screen==='conseq')b=renderConseq();
+ else if(state.screen==='results')b=renderResults();
+ else if(state.screen==='plan')b=renderPlan();
+ else if(state.screen==='admin')b=renderAdmin();
+ el.innerHTML=topbar()+b; window.scrollTo(0,0);
+}
+function start(){const i=document.getElementById('nm');state.name=(i&&i.value.trim())||'Anonymous';state.screen='phase';state.idx=0;render();}
+function pick(i){const p=PHASES[state.idx],c=p.choices[i];DIMS.forEach(d=>state.scores[d]=clamp(state.scores[d]+(c.d[d]||0)));state.log.push({phase:p.id,label:c.l});state.cur=c;state.screen='conseq';render();}
+function next(){state.cur=null; if(state.idx<PHASES.length-1){state.idx++;state.screen='phase';render();} else {state.screen='results';render();}}
+function showPlan(){state.screen='plan';render();}
+function record(){return {name:state.name,ts:Date.now(),scores:{...state.scores},finalScore:finalScore(),profile:profileKey(),log:state.log};}
+async function save(){
+ try{
+  if(!dbNs){ if(window.claude&&window.claude.use){ dbNs=await window.claude.use('db'); } }
+  if(!dbNs) throw new Error('no db');
+  await dbNs.collection('peer_results').add(record());
+ }catch(e){ state.saveWarn=true; if(state.screen==='results')render(); }
+}
+function restart(){state={screen:'intro',name:'',idx:0,scores:{inclusion:60,engage:60,develop:60,results:60,accountability:60,grow:60},log:[],cur:null,saveWarn:false,admLoading:false,admRecs:[],importMsg:null};render();}
+function addManual(){
+ const v=document.getElementById('impIn').value; const rec=b64d(v);
+ if(!rec||typeof rec.finalScore!=='number'||!rec.scores){state.importMsg={ok:false,m:'That code didn\u2019t look right \u2014 check it was copied in full.'};render();return;}
+ state.admRecs=state.admRecs||[]; state.admRecs.push(rec);
+ state.importMsg={ok:true,m:'Added: '+(rec.name||'Anonymous')};
+ render();
+ (async()=>{try{ if(!dbNs&&window.claude&&window.claude.use)dbNs=await window.claude.use('db'); if(dbNs) await dbNs.collection('peer_results').add(rec);}catch(e){}})();
+}
+async function loadAdmin(){
+ state.screen='admin';state.admLoading=true;render();
+ try{
+  if(!dbNs&&window.claude&&window.claude.use) dbNs=await window.claude.use('db');
+  if(!dbNs){state.admRecs=[];state.admLoading=false;render();return;}
+  const snap=await dbNs.collection('peer_results').get();
+  state.admRecs=(snap.docs||[]).map(d=>d.data?d.data():d);
+ }catch(e){ state.admRecs=[]; }
+ state.admLoading=false; render();
+}
+render();
+</script>
+</body></html>
