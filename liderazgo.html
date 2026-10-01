@@ -239,8 +239,7 @@ function copy(t,el){const done=()=>{if(el){const o=el.textContent;el.textContent
 function topbar(){
  if(state.screen==='intro'||state.screen==='admin')
   return `<div class="top"><div class="brand">The Mike Case <span style="color:var(--dim)">/</span> <b>Leadership Simulation</b></div></div>`;
- const s=finalScore();
- return `<div class="top"><div class="tag" style="min-width:70px">${PHASES[state.idx].tag}</div><div class="meter"><i style="width:${s}%"></i></div><div class="meterNum">${s}%</div></div>`;
+ return `<div class="top"><div class="brand">The Mike Case <span style="color:var(--dim)">/</span> <b>Leadership Simulation</b></div><div class="tag">${PHASES[state.idx].tag}</div></div>`;
 }
 
 function renderIntro(){
