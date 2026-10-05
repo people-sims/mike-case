@@ -13,19 +13,52 @@ body{margin:0;min-height:100vh;background:linear-gradient(150deg,var(--ink),var(
 .tag{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--dim)}
 h1{font-family:Fraunces,serif;font-size:40px;margin:6px 0 16px;line-height:1.1}
 .lead{font-size:17px;color:#f0e2d6;max-width:52ch;margin:0 0 32px}
-a.opt{display:flex;gap:16px;align-items:flex-start;text-decoration:none;color:var(--paper);border:1px solid var(--line);border-left:3px solid var(--lineS);background:rgba(0,0,0,.16);padding:20px;margin-bottom:12px}
-a.opt:hover,a.opt:active{border-left-color:var(--gold);background:rgba(0,0,0,.28)}
-.k{font-family:Fraunces,serif;color:var(--gold);font-size:22px;min-width:22px}
-.t{font-family:Fraunces,serif;font-size:21px;font-weight:600;margin-bottom:4px}
-.d{font-size:14px;color:#e6cfc2}
+.opt{display:flex;gap:16px;align-items:flex-start;width:100%;text-align:left;font:inherit;cursor:pointer;text-decoration:none;color:var(--paper);border:1px solid var(--line);border-left:3px solid var(--lineS);background:rgba(0,0,0,.16);padding:20px;margin-bottom:12px}
+.opt:hover,.opt:active{border-left-color:var(--gold);background:rgba(0,0,0,.28)}
+.opt.c{align-items:center}
+.k{font-family:Fraunces,serif;color:var(--gold);font-size:22px;min-width:26px}
+.t{font-family:Fraunces,serif;font-size:21px;font-weight:600}
+.d{font-size:14px;color:#e6cfc2;margin-top:4px}
 .m{font-size:12px;color:var(--dim);margin-top:8px;text-transform:uppercase;letter-spacing:.06em}
 .arrow{margin-left:auto;color:var(--gold);font-size:20px;align-self:center}
+.back{font:inherit;font-size:13px;color:var(--dim);background:none;border:none;padding:8px 0;margin-top:12px;cursor:pointer;text-decoration:underline}
 </style>
 </head>
-<body><div class="stage">
-<div class="tag">Psychological Safety Simulation</div>
-<h1>The Mike Case</h1>
-<p class="lead">Mike is senior, funny, well-liked and, without meaning to, makes it harder for newer voices to be heard. Choose the role you'll play.</p>
-<a class="opt" href="liderazgo.html"><div class="k">1</div><div><div class="t">As the Leader</div><div class="d">You manage the team. What you do defines what people believe is safe to say.</div><div class="m">6 decisions</div></div><div class="arrow">→</div></a>
-<a class="opt" href="par.html"><div class="k">2</div><div><div class="t">As a Peer</div><div class="d">You're not the manager, but you were in the room. What do you do without a title?</div><div class="m">5 decisions</div></div><div class="arrow">→</div></a>
-</div></body></html>
+<body><div class="stage" id="app"></div>
+<script>
+const LANGS=['en','es','pt'];
+const LANGNAME={en:'English',es:'Español',pt:'Português'};
+const TX={
+en:{tag:'Psychological Safety Simulation',lead:'Mike is senior, funny, well-liked and, without meaning to, makes it harder for newer voices to be heard. Choose the role you’ll play.',
+ l:'As the Leader',ld:'You manage the team. What you do defines what people believe is safe to say.',lm:'6 decisions',
+ p:'As a Peer',pd:'You’re not the manager, but you were in the room. What do you do without a title?',pm:'5 decisions',back:'Change language'},
+es:{tag:'Simulación de seguridad psicológica',lead:'Mike es senior, gracioso y querido y, sin proponérselo, hace más difícil que las voces más nuevas se escuchen. Elige el rol que vas a jugar.',
+ l:'Como líder',ld:'Lideras el equipo. Lo que hagas define qué cree la gente que es seguro decir.',lm:'6 decisiones',
+ p:'Como par',pd:'No lideras el equipo, pero estabas en la sala. ¿Qué haces sin un cargo?',pm:'5 decisiones',back:'Cambiar idioma'},
+pt:{tag:'Simulação de segurança psicológica',lead:'Mike é sênior, engraçado e querido e, sem querer, torna mais difícil que as vozes mais novas sejam ouvidas. Escolha o papel que você vai jogar.',
+ l:'Como líder',ld:'Você lidera a equipe. O que você faz define o que as pessoas acreditam ser seguro dizer.',lm:'6 decisões',
+ p:'Como par',pd:'Você não lidera a equipe, mas estava na sala. O que você faz sem um cargo?',pm:'5 decisões',back:'Mudar idioma'}
+};
+let lang=(()=>{const q=new URLSearchParams(location.search).get('lang');return LANGS.includes(q)?q:null;})();
+function setLang(l){lang=l;try{const u=new URL(location.href);if(l)u.searchParams.set('lang',l);else u.searchParams.delete('lang');history.replaceState(null,'',u);}catch(e){}render();}
+function render(){
+ const el=document.getElementById('app');
+ document.documentElement.lang=lang||'en';
+ if(!lang){
+  el.innerHTML=`<div class="tag">Choose your language · Elige tu idioma · Escolha seu idioma</div>
+  <h1 style="margin-bottom:28px">The Mike Case</h1>
+  ${LANGS.map(l=>`<button class="opt c" onclick="setLang('${l}')"><div class="k">${l.toUpperCase()}</div><div class="t">${LANGNAME[l]}</div><div class="arrow">→</div></button>`).join('')}`;
+ }else{
+  const t=TX[lang];
+  el.innerHTML=`<div class="tag">${t.tag}</div>
+  <h1>The Mike Case</h1>
+  <p class="lead">${t.lead}</p>
+  <a class="opt" href="liderazgo.html?lang=${lang}"><div class="k">1</div><div><div class="t">${t.l}</div><div class="d">${t.ld}</div><div class="m">${t.lm}</div></div><div class="arrow">→</div></a>
+  <a class="opt" href="par.html?lang=${lang}"><div class="k">2</div><div><div class="t">${t.p}</div><div class="d">${t.pd}</div><div class="m">${t.pm}</div></div><div class="arrow">→</div></a>
+  <button class="back" onclick="setLang(null)">${t.back}</button>`;
+ }
+ window.scrollTo(0,0);
+}
+render();
+</script>
+</body></html>

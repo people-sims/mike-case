@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Mike Case</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#3a0d13;--ink2:#5c1420;--panel:#4a1520;--panel2:#5c1c28;--paper:#f5ece0;--dim:#d9b6ab;--gold:#f2a71b;--line:rgba(245,236,224,.16);--lineS:rgba(245,236,224,.32);color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0)}
+body{margin:0;background:linear-gradient(150deg,var(--ink),var(--ink2) 60%,#42111a);color:var(--paper);font-family:Inter,sans-serif;line-height:1.55;padding-top:env(safe-area-inset-top,0);padding-bottom:env(safe-area-inset-bottom,0);min-height:100vh}
+h1,h2,.serif{font-family:Fraunces,serif}
+.top{position:sticky;top:0;z-index:10;padding:14px 20px;padding-top:calc(14px + env(safe-area-inset-top,0));background:rgba(58,13,19,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:16px;justify-content:space-between}
+.brand{font-size:13px;color:var(--dim)}.brand b{color:var(--paper)}
+.langs{display:flex;gap:4px}
+.langs button{font:inherit;font-size:12px;font-weight:600;letter-spacing:.06em;color:var(--dim);background:none;border:1px solid transparent;padding:5px 8px;cursor:pointer}
+.langs button.on{color:var(--paper);border-color:var(--lineS)}
+main{display:flex;justify-content:center;padding:44px 20px 90px}
+.stage{max-width:660px;width:100%}
+h1{font-size:30px;margin:4px 0 22px}
+.tag{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--dim)}
+.narrative p{font-size:16.5px;color:#f0e2d6;max-width:60ch;margin:0 0 14px}
+em{color:var(--paper);font-style:italic}
+.div{height:1px;background:var(--line);margin:28px 0}
+.choice{display:flex;gap:14px;border:1px solid var(--line);border-left:3px solid var(--lineS);background:rgba(0,0,0,.14);padding:16px 18px;margin-bottom:10px;width:100%;text-align:left;cursor:pointer;color:var(--paper);font-family:inherit}
+.choice:hover{border-left-color:var(--gold);background:rgba(0,0,0,.26)}
+.cl{font-family:Fraunces,serif;color:var(--gold);font-size:19px;min-width:20px}
+.clabel{font-weight:600;margin-bottom:3px}
+.ctext{font-size:14px;color:#e6cfc2}
+.lang .choice{align-items:center;padding:20px}
+.lang .clabel{font-family:Fraunces,serif;font-size:21px;margin:0}
+.lang .arrow{margin-left:auto;color:var(--gold);font-size:20px}
+.conseq{border:1px solid var(--lineS);background:rgba(0,0,0,.22);padding:24px}
+.conseq h4{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--dim);margin:0 0 6px}
+.conseq p{margin:0 0 16px;font-size:14.5px;color:#f0e2d6}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:6px}
+.chip{font-size:12px;padding:5px 9px;border:1px solid var(--lineS);display:inline-flex;gap:6px;align-items:center;color:var(--paper)}
+.chip.on{border-color:rgba(242,167,27,.6);background:rgba(242,167,27,.1)}
+.chip.muted{color:var(--dim);font-style:italic}
+.impLabel{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--dim);margin:16px 0 8px}
+.btn{background:var(--gold);color:#2a0a0e;border:none;padding:12px 24px;font-weight:700;cursor:pointer;margin-top:20px;font-size:14.5px;font-family:inherit}
+.btn.sec{background:none;color:var(--paper);border:1px solid var(--lineS)}
+input[type=text]{width:100%;max-width:340px;background:rgba(0,0,0,.2);border:1px solid var(--lineS);color:var(--paper);padding:11px 13px;margin-bottom:20px;font-size:16px}
+.fw{border:1px solid var(--lineS);background:rgba(0,0,0,.15);padding:22px;margin:8px 0 28px}
+.fw b{color:var(--paper)}
+.fwGrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
+@media(max-width:700px){.fwGrid{grid-template-columns:1fr}}
+.badge{display:inline-block;background:var(--gold);color:#2a0a0e;font-weight:700;font-size:10.5px;letter-spacing:.06em;padding:3px 9px;margin-bottom:10px;text-transform:uppercase}
+.fwCol .tagline{font-size:9.5px;color:var(--dim);text-transform:none;letter-spacing:0;margin-left:6px}
+.fwItem{font-size:13px;color:#e6cfc2;margin-bottom:10px;padding-left:10px;border-left:2px solid var(--line)}
+.fwItem.mute{opacity:.7}
+.fwItem b{display:block;color:var(--paper);font-size:12.5px;margin-bottom:2px}
+.fwItem .ask{display:block;margin-top:4px;font-style:italic;color:var(--dim);font-size:11.5px}
+.note{font-size:13px;color:var(--dim);border-left:2px solid var(--gold);padding-left:12px;max-width:58ch;margin:14px 0}
+.finalNum{font-family:Fraunces,serif;font-size:76px;font-weight:600;line-height:1;margin:6px 0 2px}
+.sub{color:var(--dim);font-size:12px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:26px}
+.bar{display:grid;grid-template-columns:170px 1fr 32px;gap:12px;align-items:center;margin-bottom:12px}
+.bn{font-size:12px;color:var(--dim)}
+.bt{height:6px;background:rgba(245,236,224,.15)}.bf{height:100%;background:var(--gold)}
+.profile{font-family:Fraunces,serif;color:var(--gold);font-size:22px;margin:20px 0 10px}
+.focus{border:1px solid var(--gold);background:rgba(242,167,27,.1);padding:18px 20px;margin:22px 0}
+.focus b.name{display:block;font-family:Fraunces,serif;font-size:20px;margin:8px 0 6px}
+.card{border:1px solid var(--lineS);padding:28px;background:rgba(0,0,0,.18)}
+.sec{margin-bottom:20px}
+.sec h4{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--dim);margin:0 0 8px}
+.sec ul{margin:0;padding-left:18px}
+.sec li{font-size:14.5px;color:#f0e2d6;margin-bottom:6px}
+.commit{font-style:italic;border-left:2px solid var(--gold);padding-left:12px;font-size:15px}
+@media print{.top,.btn{display:none!important}body{background:#fff;color:#111}.card{border-color:#999;background:#fff}}
+</style>
+</head>
+<body><div id="app"></div>
+<script>
+const GAME=/*__DATA__*/null;
+const DIMS=['inclusion','engage','develop','results','accountability','grow'];
+// Nombres oficiales del adidas Leadership Framework: se mantienen en ingles en todos los idiomas
+const LABEL={inclusion:'Foster Inclusion',engage:'Engage & Inspire',develop:'Develop Talent',results:'Deliver Results',accountability:'Promote Accountability',grow:'Grow Yourself'};
+const LABEL_FULL={inclusion:'Build a Diverse Team and Foster Inclusion',engage:'Engage and Inspire',develop:'Develop Talent',results:'Deliver Results',accountability:'Promote Accountability',grow:'Continue to Grow Yourself'};
+const GROUPNAME={inclusion:'Empower',engage:'Empower',develop:'Empower',results:'Elevate',accountability:'Elevate',grow:'Elevate'};
+const LANGS=['en','es','pt'];
+const LANGNAME={en:'English',es:'Español',pt:'Português'};
+const UI={
+en:{of:'of',whatDo:'What do you do?',outcome:'Outcome',youChose:'You chose',immediate:'Immediate reaction',down:'Down the line',leaned:'Pillars this choice leaned into',left:'Pillars left on the table this time',none:'None, this time',why:'Why',cont:'Continue →',seeResults:'See Your Results',complete:'Simulation Complete',finalSub:'Final Psychological Safety Score / 100',strengths:'Strengths',risks:'Risks to watch',seePlan:'See Your Action Plan →',restart:'Restart',planTag:'Action Plan',your:'Your',focusTag:'Focus Pillar for Group Discussion',scoredLow:'Scored {n}/100 — the lowest of the six pillars',contDoing:'Continue Doing',startDoing:'Start Doing',commit30:'One Commitment for the Next 30 Days',print:'Print / Save as PDF',yourName:'Your name',placeholder:'e.g. Jordan Lee',begin:'Begin the Simulation',excelTag:'shown for context, not scored here',scoredTag:'scored in this simulation',anonymous:'Anonymous'},
+es:{of:'de',whatDo:'¿Qué haces?',outcome:'Resultado',youChose:'Elegiste',immediate:'Reacción inmediata',down:'Más adelante',leaned:'Pilares que esta decisión fortaleció',left:'Pilares que quedaron sin trabajar esta vez',none:'Ninguno esta vez',why:'Por qué',cont:'Continuar →',seeResults:'Ver tus resultados',complete:'Simulación completa',finalSub:'Puntaje final de seguridad psicológica / 100',strengths:'Fortalezas',risks:'Riesgos a observar',seePlan:'Ver tu plan de acción →',restart:'Reiniciar',planTag:'Plan de acción',your:'Tu',focusTag:'Pilar de foco para la discusión grupal',scoredLow:'Puntaje {n}/100: el más bajo de los seis pilares',contDoing:'Seguir haciendo',startDoing:'Empezar a hacer',commit30:'Un compromiso para los próximos 30 días',print:'Imprimir / Guardar como PDF',yourName:'Tu nombre',placeholder:'ej.: Ana Pérez',begin:'Comenzar la simulación',excelTag:'se muestra como contexto, no se evalúa aquí',scoredTag:'se evalúa en esta simulación',anonymous:'Anónimo'},
+pt:{of:'de',whatDo:'O que você faz?',outcome:'Resultado',youChose:'Você escolheu',immediate:'Reação imediata',down:'Mais adiante',leaned:'Pilares que esta escolha fortaleceu',left:'Pilares que ficaram de fora desta vez',none:'Nenhum desta vez',why:'Por quê',cont:'Continuar →',seeResults:'Ver seus resultados',complete:'Simulação concluída',finalSub:'Pontuação final de segurança psicológica / 100',strengths:'Pontos fortes',risks:'Riscos a observar',seePlan:'Ver seu plano de ação →',restart:'Reiniciar',planTag:'Plano de ação',your:'Seu',focusTag:'Pilar de foco para a discussão em grupo',scoredLow:'Pontuação {n}/100: a mais baixa dos seis pilares',contDoing:'Continuar fazendo',startDoing:'Começar a fazer',commit30:'Um compromisso para os próximos 30 dias',print:'Imprimir / Salvar como PDF',yourName:'Seu nome',placeholder:'ex.: Ana Souza',begin:'Iniciar a simulação',excelTag:'exibido como contexto, não avaliado aqui',scoredTag:'avaliado nesta simulação',anonymous:'Anônimo'}
+};
+const KEYS=['A','B','C'];
+
+let lang=(()=>{const q=new URLSearchParams(location.search).get('lang');return LANGS.includes(q)?q:null;})();
+function fresh(){return {screen:lang?'intro':'lang',name:'',idx:0,scores:{inclusion:60,engage:60,develop:60,results:60,accountability:60,grow:60},log:[],cur:null};}
+let state=fresh();
+
+const T=()=>GAME.t[lang], U=k=>UI[lang][k], S=k=>GAME.t[lang].ui[k];
+function clamp(v){return Math.max(0,Math.min(100,v));}
+function esc(s){const d=document.createElement('div');d.innerText=s==null?'':s;return d.innerHTML;}
+function finalScore(){return Math.round(DIMS.reduce((s,c)=>s+state.scores[c],0)/DIMS.length);}
+function profileKey(){const sc=state.scores,s=finalScore();
+ if(s>=80)return 'champion'; if(s>=60)return 'inconsistent';
+ return (sc.engage<=sc.accountability)?'avoider':'silencer';}
+function tag(){return (state.idx+1)+' '+U('of')+' '+T().phases.length;}
+
+function setLang(l){
+ lang=l;
+ try{const u=new URL(location.href);u.searchParams.set('lang',l);history.replaceState(null,'',u);}catch(e){}
+ if(state.screen==='lang')state.screen='intro';
+ render();
+}
+function langSwitch(){return `<div class="langs">${LANGS.map(l=>`<button class="${l===lang?'on':''}" onclick="keepName();setLang('${l}')">${l.toUpperCase()}</button>`).join('')}</div>`;}
+function keepName(){const i=document.getElementById('nm');if(i)state.name=i.value;}
+
+function topbar(){
+ if(state.screen==='lang')return '';
+ const brand=`<div class="brand">The Mike Case <span style="color:var(--dim)">/</span> <b>${S('brand')}</b></div>`;
+ if(state.screen==='intro')return `<div class="top">${brand}${langSwitch()}</div>`;
+ return `<div class="top">${brand}<div class="tag">${tag()}</div></div>`;
+}
+
+function renderLang(){
+ return `<main><div class="stage lang">
+ <div class="tag" style="margin-bottom:8px">Choose your language · Elige tu idioma · Escolha seu idioma</div>
+ <h1 style="font-size:40px;line-height:1.1;margin-bottom:28px">The Mike Case</h1>
+ ${LANGS.map(l=>`<button class="choice" onclick="setLang('${l}')"><div class="cl">${l.toUpperCase()}</div><div class="clabel">${LANGNAME[l]}</div><div class="arrow">→</div></button>`).join('')}
+ </div></main>`;
+}
+
+function renderIntro(){
+ const t=T();
+ const excelHtml=t.excel.map((x,i)=>`<div class="fwItem mute"><b>${GAME.excelNames[i]}</b>${x.w}<span class="ask">“${x.a}”</span></div>`).join('');
+ const col=ds=>ds.map(d=>`<div class="fwItem"><b>${LABEL_FULL[d]}</b>${t.scored[d]}</div>`).join('');
+ return `<main><div class="stage">
+ <div class="tag" style="margin-bottom:8px">${S('introTag')}</div>
+ <h1>${S('introTitle')}</h1>
+ <p style="font-size:17px;color:#f0e2d6;max-width:56ch">${S('introLead')}</p>
+ <div class="fw">
+  <p style="font-size:13px;color:var(--dim);margin:0 0 16px">${S('fwNote')}</p>
+  <div class="fwGrid">
+   <div class="fwCol"><span class="badge">Excel</span><span class="tagline">${U('excelTag')}</span>${excelHtml}</div>
+   <div class="fwCol"><span class="badge">Empower</span><span class="tagline">${U('scoredTag')}</span>${col(['inclusion','engage','develop'])}</div>
+   <div class="fwCol"><span class="badge">Elevate</span><span class="tagline">${U('scoredTag')}</span>${col(['results','accountability','grow'])}</div>
+  </div>
+ </div>
+ <p style="font-size:14px;color:var(--dim);max-width:56ch">${S('introFoot')}</p>
+ <label for="nm" style="display:block;font-size:12px;text-transform:uppercase;color:var(--dim);margin:20px 0 6px">${U('yourName')}</label>
+ <input type="text" id="nm" value="${esc(state.name)}" placeholder="${U('placeholder')}" onkeydown="if(event.key==='Enter')start()">
+ <div><button class="btn" onclick="start()">${U('begin')}</button></div>
+ </div></main>`;
+}
+
+function renderPhase(){
+ const p=T().phases[state.idx];
+ const nar=p.narrative.map(x=>`<p>${x}</p>`).join('');
+ const ch=p.choices.map((c,i)=>`<button class="choice" onclick="pick(${i})"><div class="cl">${KEYS[i]}</div><div><div class="clabel">${esc(c.l)}</div><div class="ctext">${c.t}</div></div></button>`).join('');
+ return `<main><div class="stage"><h1>${esc(p.title)}</h1><div class="narrative">${nar}</div><div class="div"></div><div class="tag" style="margin-bottom:14px">${U('whatDo')}</div>${ch}</div></main>`;
+}
+
+function renderConseq(){
+ const i=state.cur,c=T().phases[state.idx].choices[i],d=GAME.d[state.idx][i];
+ const on=DIMS.filter(k=>(d[k]||0)>0),off=DIMS.filter(k=>(d[k]||0)<=0);
+ const chip=(k,active)=>`<span class="chip ${active?'on':''}">${GROUPNAME[k]} · ${LABEL[k]}</span>`;
+ const none=`<span class="chip muted">${U('none')}</span>`;
+ const last=state.idx===T().phases.length-1;
+ return `<main><div class="stage"><div class="tag" style="margin-bottom:14px">${tag()} · ${U('outcome')}</div>
+ <div class="conseq">
+ <div class="tag" style="color:var(--gold);margin-bottom:10px">${U('youChose')}: ${KEYS[i]}. ${esc(c.l)}</div>
+ <h4>${U('immediate')}</h4><p>${c.imm}</p>
+ <h4>${U('down')}</h4><p>${c.del}</p>
+ <div class="impLabel">${U('leaned')}</div>
+ <div class="chips">${on.length?on.map(k=>chip(k,true)).join(''):none}</div>
+ <div class="impLabel">${U('left')}</div>
+ <div class="chips">${off.length?off.map(k=>chip(k,false)).join(''):none}</div>
+ <h4 style="margin-top:18px">${U('why')}</h4><p style="margin:0">${c.why}</p>
+ </div>
+ <button class="btn" onclick="next()">${last?U('seeResults'):U('cont')}</button>
+ </div></main>`;
+}
+
+function devPlan(){
+ const P=T().plan;
+ const sorted=DIMS.slice().sort((a,b)=>state.scores[b]-state.scores[a]);
+ const weakest=sorted[sorted.length-1];
+ return {cont:sorted.slice(0,2).map(d=>P.CONT[d]),start:sorted.slice(-2).reverse().map(d=>P.START[d]),commit:P.COMMIT[weakest],disc:P.DISC[weakest],weakest};
+}
+
+function renderResults(){
+ const score=finalScore(),pr=T().profiles[profileKey()];
+ const bars=DIMS.map(d=>`<div class="bar"><div class="bn">${GROUPNAME[d]} · ${LABEL[d]}</div><div class="bt"><div class="bf" style="width:${state.scores[d]}%"></div></div><div style="text-align:right">${state.scores[d]}</div></div>`).join('');
+ return `<main><div class="stage">
+ <div class="tag">${U('complete')}</div>
+ <div class="finalNum">${score}</div>
+ <div class="sub">${U('finalSub')}</div>
+ <div class="note">${S('resultNote')}</div>
+ <div class="profile">${pr.name}</div>
+ <p style="color:#f0e2d6;max-width:60ch">${pr.sum}</p>
+ <div style="margin:22px 0 8px">${bars}</div>
+ <div class="sec"><h4>${U('strengths')}</h4><p style="font-size:14.5px;color:#f0e2d6">${pr.str}</p></div>
+ <div class="sec"><h4>${U('risks')}</h4><p style="font-size:14.5px;color:#f0e2d6">${pr.risk}</p></div>
+ <button class="btn" onclick="showPlan()">${U('seePlan')}</button>
+ <button class="btn sec" onclick="restart()" style="margin-left:8px">${U('restart')}</button>
+ </div></main>`;
+}
+
+function renderPlan(){
+ const pl=devPlan();
+ const who=state.name?esc(state.name):U('your');
+ return `<main><div class="stage"><div class="card">
+ <div class="tag" style="color:var(--gold)">${who} · ${U('planTag')}</div>
+ <h2>${S('planTitle')}</h2>
+ <div class="focus">
+  <div class="tag">${GROUPNAME[pl.weakest]} · ${U('focusTag')}</div>
+  <b class="name">${LABEL_FULL[pl.weakest]}</b>
+  <div style="font-size:12px;color:var(--dim);margin-bottom:10px">${U('scoredLow').replace('{n}',state.scores[pl.weakest])}</div>
+  <div style="font-style:italic;border-left:2px solid var(--gold);padding-left:12px;font-size:14px">${pl.disc}</div>
+ </div>
+ <div class="sec"><h4>${U('contDoing')}</h4><ul>${pl.cont.map(t=>`<li>${t}</li>`).join('')}</ul></div>
+ <div class="sec"><h4>${U('startDoing')}</h4><ul>${pl.start.map(t=>`<li>${t}</li>`).join('')}</ul></div>
+ <div class="sec"><h4>${U('commit30')}</h4><p class="commit">${pl.commit}</p></div>
+ </div>
+ <button class="btn" onclick="window.print()">${U('print')}</button>
+ <button class="btn sec" onclick="restart()" style="margin-left:8px">${U('restart')}</button>
+ </div></main>`;
+}
+
+function render(){
+ const el=document.getElementById('app'); let b='';
+ if(state.screen==='lang')b=renderLang();
+ else if(state.screen==='intro')b=renderIntro();
+ else if(state.screen==='phase')b=renderPhase();
+ else if(state.screen==='conseq')b=renderConseq();
+ else if(state.screen==='results')b=renderResults();
+ else if(state.screen==='plan')b=renderPlan();
+ document.documentElement.lang=lang||'en';
+ document.title=lang?S('docTitle'):'The Mike Case';
+ el.innerHTML=topbar()+b; window.scrollTo(0,0);
+}
+function start(){const i=document.getElementById('nm');state.name=(i&&i.value.trim())||U('anonymous');state.screen='phase';state.idx=0;render();}
+function pick(i){const d=GAME.d[state.idx][i];DIMS.forEach(k=>state.scores[k]=clamp(state.scores[k]+(d[k]||0)));state.log.push({phase:state.idx+1,choice:KEYS[i]});state.cur=i;state.screen='conseq';render();}
+function next(){state.cur=null; if(state.idx<T().phases.length-1){state.idx++;state.screen='phase';}else{state.screen='results';} render();}
+function showPlan(){state.screen='plan';render();}
+function restart(){state=fresh();state.screen='intro';render();}
+render();
+</script>
+</body></html>

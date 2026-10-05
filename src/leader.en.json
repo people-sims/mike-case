@@ -1,0 +1,434 @@
+{
+ "d": [
+  [
+   {
+    "inclusion": -6,
+    "engage": -4,
+    "develop": 0,
+    "results": -2,
+    "accountability": -6,
+    "grow": -2
+   },
+   {
+    "inclusion": 8,
+    "engage": 5,
+    "develop": 4,
+    "results": 2,
+    "accountability": 7,
+    "grow": 3
+   },
+   {
+    "inclusion": -3,
+    "engage": -1,
+    "develop": 0,
+    "results": 0,
+    "accountability": -3,
+    "grow": 1
+   }
+  ],
+  [
+   {
+    "inclusion": 7,
+    "engage": -3,
+    "develop": 1,
+    "results": -2,
+    "accountability": 6,
+    "grow": 1
+   },
+   {
+    "inclusion": 1,
+    "engage": 2,
+    "develop": 3,
+    "results": 4,
+    "accountability": 4,
+    "grow": 2
+   },
+   {
+    "inclusion": 2,
+    "engage": 1,
+    "develop": 1,
+    "results": 1,
+    "accountability": -2,
+    "grow": 0
+   }
+  ],
+  [
+   {
+    "inclusion": -1,
+    "engage": 0,
+    "develop": -3,
+    "results": 0,
+    "accountability": -6,
+    "grow": -2
+   },
+   {
+    "inclusion": -1,
+    "engage": -1,
+    "develop": -4,
+    "results": -1,
+    "accountability": -3,
+    "grow": -1
+   },
+   {
+    "inclusion": -4,
+    "engage": -1,
+    "develop": -2,
+    "results": 0,
+    "accountability": 1,
+    "grow": -1
+   }
+  ],
+  [
+   {
+    "inclusion": -1,
+    "engage": 3,
+    "develop": -4,
+    "results": 0,
+    "accountability": -8,
+    "grow": -2
+   },
+   {
+    "inclusion": 6,
+    "engage": 6,
+    "develop": 10,
+    "results": 5,
+    "accountability": 10,
+    "grow": 6
+   },
+   {
+    "inclusion": -2,
+    "engage": -6,
+    "develop": -5,
+    "results": -1,
+    "accountability": 8,
+    "grow": -2
+   }
+  ],
+  [
+   {
+    "inclusion": -2,
+    "engage": -4,
+    "develop": -3,
+    "results": 0,
+    "accountability": 2,
+    "grow": -3
+   },
+   {
+    "inclusion": -1,
+    "engage": -2,
+    "develop": -2,
+    "results": 0,
+    "accountability": -2,
+    "grow": -2
+   },
+   {
+    "inclusion": -3,
+    "engage": -3,
+    "develop": -1,
+    "results": 0,
+    "accountability": 0,
+    "grow": -1
+   }
+  ],
+  [
+   {
+    "inclusion": 2,
+    "engage": 4,
+    "develop": 2,
+    "results": 2,
+    "accountability": 1,
+    "grow": 4
+   },
+   {
+    "inclusion": 0,
+    "engage": -2,
+    "develop": 5,
+    "results": 4,
+    "accountability": 8,
+    "grow": 1
+   },
+   {
+    "inclusion": -4,
+    "engage": -1,
+    "develop": -5,
+    "results": -3,
+    "accountability": -6,
+    "grow": -6
+   }
+  ]
+ ],
+ "en": {
+  "excel": [
+   {
+    "w": "Connects the team’s work to adidas’ purpose, products, consumers, and culture — in decisions, not just words.",
+    "a": "Do I feel more connected to adidas because of how my leader shows up?"
+   },
+   {
+    "w": "Takes real ownership, balancing business impact, people, and long-term consequences.",
+    "a": "Does my leader take ownership for decisions and outcomes even when it’s uncomfortable?"
+   },
+   {
+    "w": "Looks ahead, challenges today’s way of working, and creates space for better solutions.",
+    "a": "Does my leader help us look ahead, or are we mostly reacting to day-to-day demand?"
+   }
+  ],
+  "scored": {
+   "inclusion": "Creates an environment where different perspectives are genuinely valued and included.",
+   "engage": "Gives clear direction and energy that helps people do their best work.",
+   "develop": "Actively supports growth through feedback, trust, and opportunities.",
+   "results": "Helps turn goals into outcomes by focusing on what truly creates value.",
+   "accountability": "Sets clear expectations and addresses issues constructively.",
+   "grow": "Role models learning and openness to feedback."
+  },
+  "phases": [
+   {
+    "title": "The Comment",
+    "narrative": [
+     "Your team is midway through the weekly meeting. Alex, who joined two months ago, proposes a new approach to client onboarding — a little raw, but promising.",
+     "Mike, a senior engineer, chuckles and leans back: <em>“We actually tried that years ago,”</em> he says, smiling. A few people laugh along.",
+     "Still friendly, he adds: <em>“I guess every new hire has to rediscover our old mistakes.”</em> Alex smiles too — but it doesn’t reach their eyes. They go quiet for the rest of the meeting.",
+     "It was a quick comment, mildly funny even. You have maybe two seconds to decide if it’s worth pausing the meeting for."
+    ],
+    "choices": [
+     {
+      "l": "Laugh along and move on",
+      "t": "Mike is well-liked, and it was — technically — a joke. Calling it out might make you the one who kills the room’s energy.",
+      "imm": "The meeting continues smoothly. Mike feels affirmed. Alex says nothing else for the rest of the meeting.",
+      "del": "In the following weeks, Alex’s contributions in meetings drop off almost entirely — though it’s hard to say for certain this is why.",
+      "why": "This keeps the meeting light and doesn’t make a small joke into a bigger deal — a defensible instinct in the moment. The cost is that, in real time, you can’t actually know whether this was harmless or the first domino."
+     },
+     {
+      "l": "Name it respectfully, right there",
+      "t": "“Mike, I know that wasn’t meant to sting — but let’s make sure new ideas get a fair hearing, regardless of what we’ve tried before. Alex, can you say more about what’s different this time?”",
+      "imm": "The room goes quiet for a second. Mike looks surprised but nods: “Fair enough.” Alex, hesitant, keeps explaining.",
+      "del": "In the following weeks, others are slightly more willing to speak up — though Mike also seems a bit more guarded around you.",
+      "why": "Naming it in the moment protects Alex and signals what’s acceptable, in real time. It also means correcting a well-liked colleague in front of the whole team over what was, on its face, a small comment."
+     },
+     {
+      "l": "Stay silent and move the discussion forward",
+      "t": "“Good point — let’s also hear from the rest of the team.” You redirect without naming the comment, planning to watch for a pattern.",
+      "imm": "The meeting continues without friction. Nobody seems to notice anything happened.",
+      "del": "Alex is a little quieter in the next few meetings. You’re not sure if it’s related.",
+      "why": "Keeping the meeting moving avoids turning one comment into a confrontation and gives you room to watch before reacting. The risk is that watching and not noticing look identical, from Alex’s side."
+     }
+    ]
+   },
+   {
+    "title": "Mike Interrupts Again",
+    "narrative": [
+     "Two weeks later. Alex is walking the team through a fix for a recurring bug. Mid-sentence, Mike jumps in: <em>“Actually, I think the faster path is just to patch it at the API layer.”</em>",
+     "Alex stops talking. Mike isn’t wrong, technically — it might even be the better fix. But it’s the second time this month he’s cut Alex off before finishing a thought. Nobody else seems to notice.",
+     "You have maybe three seconds to decide what, if anything, you do — in front of the whole team."
+    ],
+    "choices": [
+     {
+      "l": "Call it out immediately, in the room",
+      "t": "“Hold on, Mike — let Alex finish the thought first.”",
+      "imm": "The room goes quiet. Alex finishes, a little flustered. Mike raises his hands: “Sorry, sorry — go ahead.”",
+      "del": "Alex seems to stand a little straighter in the meetings that follow. Mike is noticeably quieter for the rest of this one.",
+      "why": "Correcting it live protects the moment for Alex and shows the whole team what’s expected. It also means correcting a senior, well-liked colleague in front of the group over a technical suggestion that wasn’t even wrong."
+     },
+     {
+      "l": "Let it pass, address it with Mike privately right after",
+      "t": "The meeting continues. Afterward, you catch Mike: “You’ve cut Alex off twice this month. Leave room for them to finish.”",
+      "imm": "The meeting stays smooth. Privately, Mike takes the note without much reaction: “Noted, sorry about that.”",
+      "del": "Alex never sees the correction happen. From their side, the meeting felt like the ones before it.",
+      "why": "A private word protects Mike from public embarrassment and keeps the meeting’s energy intact. The cost is that Alex never actually sees the correction happen, so the room’s unspoken read of what’s acceptable doesn’t change."
+     },
+     {
+      "l": "Redirect neutrally without naming what happened",
+      "t": "“Alex, keep going — we’ll circle back to Mike’s point.”",
+      "imm": "The meeting continues without confrontation. Alex finishes their point.",
+      "del": "A similar moment happens again the following week. It’s starting to look less like a slip and more like a habit specific to Alex.",
+      "why": "This keeps things moving and gives Alex room to finish without confrontation. The risk is that it treats the interruption as incidental rather than a pattern worth naming, so nothing about the norm actually changes."
+     }
+    ]
+   },
+   {
+    "title": "Writing the Review",
+    "narrative": [
+     "Performance review season arrives. You need to put this pattern in writing as part of Mike’s formal review — something that will follow him, and that he’ll read.",
+     "You’re weighing a few ways to phrase it. None of them look outright wrong on paper — but each has a catch you won’t fully see until after it’s written."
+    ],
+    "choices": [
+     {
+      "l": "Keep it in your private manager notes, without telling Mike it’s there",
+      "t": "You add a confidential note to your own file flagging the pattern as something to monitor, without raising it with Mike directly.",
+      "imm": "Mike’s review reads fine to him. He has no idea anything was flagged.",
+      "del": "If this ever factors into a promotion or bonus decision, Mike will have had no chance to respond to something he never knew existed.",
+      "why": "Keeping a private note feels cautious, and avoids an uncomfortable conversation before you’re fully ready to have it. But documenting something that can affect Mike’s career without ever telling him breaks the basic fairness of feedback — he can’t improve on, or contest, something he’s never been told exists."
+     },
+     {
+      "l": "Frame it as a general trait — “needs to build more patience with junior talent”",
+      "t": "You write the note in general terms, without tying it to the specific comments or moments you actually saw.",
+      "imm": "Mike reads it and isn’t sure what, specifically, to change. “I guess I’ll try to be more patient?”",
+      "del": "Without specifics, the same pattern is likely to repeat, and next year’s review may say something similar, just as vaguely.",
+      "why": "A general trait note avoids relitigating specific, possibly disputed moments, and feels less confrontational to write. But turning a behavior into a personality label gives Mike nothing concrete to act on — and character-level feedback is exactly where people get defensive instead of reflective."
+     },
+     {
+      "l": "Include a detail from Alex’s private conversation with you, without naming them, as evidence",
+      "t": "You add a line referencing that “a team member privately shared feeling shut down in meetings” — specific enough that Mike could likely guess who.",
+      "imm": "Mike reads it and, within a day, asks Alex directly: “Hey, did you say something to our manager about me?”",
+      "del": "Alex feels blindsided that a private conversation became identifiable evidence, and is now warier of ever confiding in you again.",
+      "why": "Grounding feedback in a real, specific moment is exactly what makes it credible and actionable. The cost here is doing it in a way that’s traceable back to Alex without their consent — it turns someone’s trust in you into evidence they didn’t agree to provide, and teaches your team that confiding in you isn’t actually safe."
+     }
+    ]
+   },
+   {
+    "title": "The Difficult Conversation",
+    "narrative": [
+     "You ask Mike for fifteen minutes. Before you can open the conversation, he says, with an easy laugh: <em>“If this is about that joke, I think people are becoming a little too sensitive these days.”</em>",
+     "After you’ve made your point, he adds: <em>“Understood. I’ll try to sound less experienced next time”</em> — a wry smile — <em>“but I wasn’t trying to discourage anyone.”</em>",
+     "He hasn’t fully connected the dots yet. You’ve already said your piece once. How much more is worth saying right now is a genuinely close call."
+    ],
+    "choices": [
+     {
+      "l": "Keep it warm, mention it lightly, wrap up",
+      "t": "“Just something to think about,” you say, and end the conversation there.",
+      "imm": "The conversation ends on an easy note. Mike leaves feeling heard rather than lectured.",
+      "del": "Without reinforcement, Mike’s takeaway settles into something closer to “be a little nicer,” not a specific pattern to change.",
+      "why": "Ending here respects that you’ve already delivered clear feedback — repeating yourself can suggest you don’t trust him to have understood. The risk is that his last comment suggests he hasn’t fully connected the dots, and you’re choosing not to check."
+     },
+     {
+      "l": "Be specific — situation, behavior, impact — and hold the line even after his first response",
+      "t": "“I hear that you weren’t trying to discourage anyone — I believe that. And the impact still happened, regardless of intent. That’s the thing I need you to sit with.”",
+      "imm": "Mike goes quiet for a second. “Fair,” he finally says. Not a full breakthrough — but something.",
+      "del": "Over the following weeks, Mike is visibly more careful — not perfect, but trying.",
+      "why": "Separating intent from impact gives Mike something concrete to work with, instead of something to defend. The cost is a longer, less comfortable conversation, extending something he seemed ready to close."
+     },
+     {
+      "l": "Be blunt about the pattern, no cushioning",
+      "t": "“Mike, this keeps happening, and it needs to stop — no middle ground.”",
+      "imm": "Mike stiffens. “Okay... I hear you” — more defensive than reflective.",
+      "del": "The message lands, technically. But Mike is more guarded for a while, without necessarily understanding why.",
+      "why": "Bluntness removes any ambiguity about how serious this is. The cost is that, without empathy, it’s easy for Mike to hear this as an attack rather than information he can use."
+     }
+    ]
+   },
+   {
+    "title": "Reinforcing the Message",
+    "narrative": [
+     "You want to make sure the change sticks. Three ways to “lock in” the message — none of them is misconduct, but it’s worth noticing what each one actually teaches the team."
+    ],
+    "choices": [
+     {
+      "l": "Summarize it in writing and CC Mike’s manager, “to be transparent”",
+      "t": "You send an email summarizing the conversation and copy Mike’s manager on it.",
+      "imm": "The email goes out. Mike replies politely, but visibly surprised at who was copied.",
+      "del": "Mike starts hesitating before agreeing to any informal conversation with you — he no longer knows what becomes a record.",
+      "why": "This looks like accountability, but escalating without telling Mike first turns a coaching moment into a surprise consequence — it breaks the trust that a private conversation would stay private, and teaches the team that talking to you privately isn’t actually private."
+     },
+     {
+      "l": "Publicly praise Mike in the next meeting for “listening well”",
+      "t": "In the next meeting, you highlight publicly how Mike has “improved his listening.”",
+      "imm": "Mike looks a little embarrassed but accepts the praise. The team doesn’t quite follow the context.",
+      "del": "No one on the team saw Mike get this wrong in public — so the praise feels manufactured, and Mike himself isn’t sure how to read it next time.",
+      "why": "Public praise feels generous, but manufacturing a moment about a private correction — without warning Mike it’s coming — puts him on display for something the team never saw him get right in the first place, and teaches the room that feedback is theater, not honesty."
+     },
+     {
+      "l": "Ask Alex, in front of Mike, to confirm things feel better now",
+      "t": "“Alex, do you feel things have improved with Mike?” you ask, with Mike present.",
+      "imm": "Alex hesitates, glances at Mike, and gives a vague, positive answer.",
+      "del": "Alex avoids bringing up anything related to Mike for the following weeks, even when asked privately.",
+      "why": "This puts the person with the least power in the room in the position of having to publicly vouch for their own senior colleague’s improvement, on the spot — even framed kindly, it turns Alex’s psychological safety into something they have to perform for an audience."
+     }
+    ]
+   },
+   {
+    "title": "Closing the Loop",
+    "narrative": [
+     "A month later. Mike hasn’t made a dismissive joke in weeks, and the interrupting has mostly stopped. Alex has started speaking up again, tentatively.",
+     "Real progress, not perfection — and it should show up in the team’s results too, not just its climate. What to do with that now is a genuinely disputed call among leaders."
+    ],
+    "choices": [
+     {
+      "l": "Keep it informal — mention things as they come up",
+      "t": "You decide not to formalize anything, and keep an eye on it the way you have been.",
+      "imm": "Nothing changes day-to-day. Mike doesn’t feel like he’s “on a plan.”",
+      "del": "Progress mostly holds, though a few small moments slip past unaddressed when your own attention is elsewhere.",
+      "why": "Staying informal preserves the feel of genuine mentorship, matching Mike’s real, voluntary progress. The trade-off is that it depends entirely on your continued attention — nothing forces you to keep noticing if your own bandwidth shrinks."
+     },
+     {
+      "l": "Put it in writing — a short development note with a follow-up date",
+      "t": "You draft a few lines summarizing the pattern, the progress, and a follow-up date, and share it with Mike directly.",
+      "imm": "Mike reads it carefully. “I get why you’re writing this down. I just didn’t expect it to be... official.”",
+      "del": "Expectations are now unambiguous for both of you — but the relationship shifts slightly, from mentorship toward something closer to process.",
+      "why": "Documentation creates a clear, fair record that protects both Mike and Alex if anything resurfaces later. The cost is that formalizing earlier than Mike feels is warranted can read as escalation, cooling a relationship that was actually moving in the right direction."
+     },
+     {
+      "l": "Consider it resolved and move on",
+      "t": "Given the visible improvement, you decide not to raise it again unless something new comes up.",
+      "imm": "Nothing is said. Everyone moves on, including you.",
+      "del": "A few months later, a quieter version of the original pattern resurfaces — this time with a different junior teammate.",
+      "why": "Real progress deserves recognition, and constantly reopening a resolved issue has its own cost. The risk, given you’ve already seen this pattern quietly resurface once, is treating “better” as the same thing as “done.”"
+     }
+    ]
+   }
+  ],
+  "profiles": {
+   "champion": {
+    "name": "Psychological Safety Champion",
+    "sum": "You consistently intervened with respect, courage, and specificity — even when it was uncomfortable. Your team is more likely to speak up, disagree, and take risks because of how you responded.",
+    "str": "Direct, specific feedback. Balances empathy with accountability. Follows through over time.",
+    "risk": "Watch for fatigue — consistently initiating hard conversations takes real energy."
+   },
+   "inconsistent": {
+    "name": "Inclusive but Inconsistent",
+    "sum": "You care about inclusion, but your responses were uneven — sometimes courageous and specific, other times avoidant or vague. Your team likely experiences safety as situational.",
+    "str": "Genuine care for the team. Capable of strong intervention when you commit to it.",
+    "risk": "Inconsistency can be more confusing than a consistently lower bar."
+   },
+   "avoider": {
+    "name": "Conflict Avoider",
+    "sum": "You tend to prioritize comfort over direct intervention. Issues you noticed often went unaddressed, or were addressed too gently.",
+    "str": "Warm, low-conflict presence.",
+    "risk": "Avoidance has a cost: without intervention, dominant voices quietly crowd out others."
+   },
+   "silencer": {
+    "name": "Unintended Silencer",
+    "sum": "Despite good intentions, your choices — laughing along, staying silent, softening feedback — likely reinforced the very dynamics that discourage participation. One of the most common, least visible failures, coming from people who never meant harm.",
+    "str": "Not malicious, not aggressive — a genuinely fixable pattern once it’s visible.",
+    "risk": "Team members may quietly disengage rather than confront you, since nothing you did was overtly wrong."
+   }
+  },
+  "plan": {
+   "CONT": {
+    "inclusion": "Making space for newer or quieter voices to finish their thought.",
+    "engage": "Bringing energy and trust into difficult conversations instead of letting them go flat.",
+    "develop": "Giving feedback that is specific and actionable, not just emotional.",
+    "results": "Connecting psychological safety to better, faster technical decisions.",
+    "accountability": "Naming specific behaviors directly with the person responsible.",
+    "grow": "Staying curious about your own blind spots."
+   },
+   "START": {
+    "inclusion": "Actively inviting quieter team members back into the conversation.",
+    "engage": "Using tension as a chance to build trust, not just get through it.",
+    "develop": "Structuring feedback with situation, behavior, and impact.",
+    "results": "Measuring whether someone’s silence is costing the team quality or speed.",
+    "accountability": "Treating repeated patterns — not just single incidents — as worth naming directly.",
+    "grow": "Asking a trusted peer what you might be missing about your impact."
+   },
+   "COMMIT": {
+    "inclusion": "In the next team meeting, I will notice who hasn’t spoken and invite them in by name.",
+    "engage": "In the next difficult conversation, I will name what the person does well before naming what needs to change.",
+    "develop": "This week, I will give one piece of feedback using situation, behavior, and impact.",
+    "results": "This week, I will ask the team whether a recent silence may have cost us a better decision.",
+    "accountability": "This week, I will name one pattern I’ve been letting slide, directly to the person involved.",
+    "grow": "This month, I will ask one person I trust what they think I miss about how I show up in meetings."
+   },
+   "DISC": {
+    "inclusion": "What’s one concrete habit that would make it easier for a quieter voice to speak up this month?",
+    "engage": "When tension shows up, what could you do to keep it a dialogue instead of a lecture or a retreat?",
+    "develop": "What would it look like to give structured feedback every week, even for small moments?",
+    "results": "What decision on your team could have been better if someone had felt safe to disagree earlier?",
+    "accountability": "What pattern have you been letting slide because naming it felt awkward — and what would naming it look like?",
+    "grow": "Who could you ask, this month, what they think you miss about your own impact in the room?"
+   }
+  },
+  "excelNames": [
+   "Live Your Passion for the Brand",
+   "Act Like It’s Your Own Company",
+   "Think Bigger and Beyond"
+  ]
+ }
+}
