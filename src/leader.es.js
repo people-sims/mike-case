@@ -7,7 +7,7 @@ ui:{
  introLead:"Lideras un equipo de ocho personas. Mike es senior, gracioso y querido, y, sin proponérselo, hace más difícil que las voces más nuevas se escuchen. Lo que hagas al respecto define qué cree tu equipo que es seguro decir en voz alta.",
  fwNote:"Cada decisión se evalúa según el adidas Leadership Framework. La seguridad psicológica no es una habilidad aislada: es el resultado de practicar estos pilares de forma consistente. Como esto afecta directamente el desempeño del equipo, <b>Deliver Results</b> también se evalúa aquí, junto con Empower y Elevate.",
  introFoot:"6 decisiones. La mayoría no tiene una opción claramente perfecta: líderes razonables elegirían distinto. Al final recibes un perfil y un pilar en el que enfocarte para la discusión grupal.",
- resultNote:"Este puntaje surge de tu desempeño en los seis pilares de abajo: la seguridad psicológica es el resultado de una conducta de liderazgo consistente, no una habilidad aislada.",
+ resultNote:"Tu perfil surge de tu desempeño en los seis pilares de abajo: la seguridad psicológica es el resultado de una conducta de liderazgo consistente, no una habilidad aislada.",
  planTitle:"Tu plan de acción de seguridad psicológica"
 },
 excel:[

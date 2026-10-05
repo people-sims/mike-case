@@ -7,7 +7,7 @@ ui:{
  introLead:"Você não lidera a equipe. Mas estava na sala quando Mike, um colega sênior, tornou sem querer mais difícil que a voz de Alex fosse ouvida. A segurança psicológica não depende só de quem tem um cargo: também depende do que os pares fazem, ou deixam de fazer.",
  fwNote:"Mesmo sem autoridade formal, as suas escolhas são avaliadas com base no mesmo adidas Leadership Framework. A segurança psicológica afeta o desempenho da equipe, então <b>Deliver Results</b> também conta aqui.",
  introFoot:"5 decisões, mais rápida do que a versão de liderança. A maioria não tem uma opção claramente perfeita.",
- resultNote:"Esta pontuação vem do seu desempenho nos seis pilares abaixo: a segurança psicológica é algo que qualquer colega pode fortalecer ou enfraquecer, com ou sem um cargo de liderança.",
+ resultNote:"Seu perfil vem do seu desempenho nos seis pilares abaixo: a segurança psicológica é algo que qualquer colega pode fortalecer ou enfraquecer, com ou sem um cargo de liderança.",
  planTitle:"Seu plano de ação como par"
 },
 excel:[

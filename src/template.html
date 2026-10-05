@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>The Mike Case</title>
+<meta name="description" content="The Mike Case, build 2026-10-05b">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{--ink:#3a0d13;--ink2:#5c1420;--panel:#4a1520;--panel2:#5c1c28;--paper:#f5ece0;--dim:#d9b6ab;--gold:#f2a71b;--line:rgba(245,236,224,.16);--lineS:rgba(245,236,224,.32);color-scheme:dark}
@@ -53,8 +54,6 @@ input[type=text]{width:100%;max-width:340px;background:rgba(0,0,0,.2);border:1px
 .fwItem b{display:block;color:var(--paper);font-size:12.5px;margin-bottom:2px}
 .fwItem .ask{display:block;margin-top:4px;font-style:italic;color:var(--dim);font-size:11.5px}
 .note{font-size:13px;color:var(--dim);border-left:2px solid var(--gold);padding-left:12px;max-width:58ch;margin:14px 0}
-.finalNum{font-family:Fraunces,serif;font-size:76px;font-weight:600;line-height:1;margin:6px 0 2px}
-.sub{color:var(--dim);font-size:12px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:26px}
 .bar{display:grid;grid-template-columns:170px 1fr 32px;gap:12px;align-items:center;margin-bottom:12px}
 .bn{font-size:12px;color:var(--dim)}
 .bt{height:6px;background:rgba(245,236,224,.15)}.bf{height:100%;background:var(--gold)}
@@ -81,9 +80,9 @@ const GROUPNAME={inclusion:'Empower',engage:'Empower',develop:'Empower',results:
 const LANGS=['en','es','pt'];
 const LANGNAME={en:'English',es:'Español',pt:'Português'};
 const UI={
-en:{of:'of',whatDo:'What do you do?',outcome:'Outcome',youChose:'You chose',immediate:'Immediate reaction',down:'Down the line',leaned:'Pillars this choice leaned into',left:'Pillars left on the table this time',none:'None, this time',why:'Why',cont:'Continue →',seeResults:'See Your Results',complete:'Simulation Complete',finalSub:'Final Psychological Safety Score / 100',strengths:'Strengths',risks:'Risks to watch',seePlan:'See Your Action Plan →',restart:'Restart',planTag:'Action Plan',your:'Your',focusTag:'Focus Pillar for Group Discussion',scoredLow:'Scored {n}/100 — the lowest of the six pillars',contDoing:'Continue Doing',startDoing:'Start Doing',commit30:'One Commitment for the Next 30 Days',print:'Print / Save as PDF',yourName:'Your name',placeholder:'e.g. Jordan Lee',begin:'Begin the Simulation',excelTag:'shown for context, not scored here',scoredTag:'scored in this simulation',anonymous:'Anonymous'},
-es:{of:'de',whatDo:'¿Qué haces?',outcome:'Resultado',youChose:'Elegiste',immediate:'Reacción inmediata',down:'Más adelante',leaned:'Pilares que esta decisión fortaleció',left:'Pilares que quedaron sin trabajar esta vez',none:'Ninguno esta vez',why:'Por qué',cont:'Continuar →',seeResults:'Ver tus resultados',complete:'Simulación completa',finalSub:'Puntaje final de seguridad psicológica / 100',strengths:'Fortalezas',risks:'Riesgos a observar',seePlan:'Ver tu plan de acción →',restart:'Reiniciar',planTag:'Plan de acción',your:'Tu',focusTag:'Pilar de foco para la discusión grupal',scoredLow:'Puntaje {n}/100: el más bajo de los seis pilares',contDoing:'Seguir haciendo',startDoing:'Empezar a hacer',commit30:'Un compromiso para los próximos 30 días',print:'Imprimir / Guardar como PDF',yourName:'Tu nombre',placeholder:'ej.: Ana Pérez',begin:'Comenzar la simulación',excelTag:'se muestra como contexto, no se evalúa aquí',scoredTag:'se evalúa en esta simulación',anonymous:'Anónimo'},
-pt:{of:'de',whatDo:'O que você faz?',outcome:'Resultado',youChose:'Você escolheu',immediate:'Reação imediata',down:'Mais adiante',leaned:'Pilares que esta escolha fortaleceu',left:'Pilares que ficaram de fora desta vez',none:'Nenhum desta vez',why:'Por quê',cont:'Continuar →',seeResults:'Ver seus resultados',complete:'Simulação concluída',finalSub:'Pontuação final de segurança psicológica / 100',strengths:'Pontos fortes',risks:'Riscos a observar',seePlan:'Ver seu plano de ação →',restart:'Reiniciar',planTag:'Plano de ação',your:'Seu',focusTag:'Pilar de foco para a discussão em grupo',scoredLow:'Pontuação {n}/100: a mais baixa dos seis pilares',contDoing:'Continuar fazendo',startDoing:'Começar a fazer',commit30:'Um compromisso para os próximos 30 dias',print:'Imprimir / Salvar como PDF',yourName:'Seu nome',placeholder:'ex.: Ana Souza',begin:'Iniciar a simulação',excelTag:'exibido como contexto, não avaliado aqui',scoredTag:'avaliado nesta simulação',anonymous:'Anônimo'}
+en:{of:'of',whatDo:'What do you do?',outcome:'Outcome',youChose:'You chose',immediate:'Immediate reaction',down:'Down the line',leaned:'Pillars this choice leaned into',left:'Pillars left on the table this time',none:'None, this time',why:'Why',cont:'Continue →',seeResults:'See Your Results',complete:'Simulation Complete',strengths:'Strengths',risks:'Risks to watch',seePlan:'See Your Action Plan →',restart:'Restart',planTag:'Action Plan',your:'Your',focusTag:'Focus Pillar for Group Discussion',scoredLow:'Scored {n}/100 — the lowest of the six pillars',contDoing:'Continue Doing',startDoing:'Start Doing',commit30:'One Commitment for the Next 30 Days',print:'Print / Save as PDF',yourName:'Your name',placeholder:'e.g. Jordan Lee',begin:'Begin the Simulation',excelTag:'shown for context, not scored here',scoredTag:'scored in this simulation',anonymous:'Anonymous'},
+es:{of:'de',whatDo:'¿Qué haces?',outcome:'Resultado',youChose:'Elegiste',immediate:'Reacción inmediata',down:'Más adelante',leaned:'Pilares que esta decisión fortaleció',left:'Pilares que quedaron sin trabajar esta vez',none:'Ninguno esta vez',why:'Por qué',cont:'Continuar →',seeResults:'Ver tus resultados',complete:'Simulación completa',strengths:'Fortalezas',risks:'Riesgos a observar',seePlan:'Ver tu plan de acción →',restart:'Reiniciar',planTag:'Plan de acción',your:'Tu',focusTag:'Pilar de foco para la discusión grupal',scoredLow:'Puntaje {n}/100: el más bajo de los seis pilares',contDoing:'Seguir haciendo',startDoing:'Empezar a hacer',commit30:'Un compromiso para los próximos 30 días',print:'Imprimir / Guardar como PDF',yourName:'Tu nombre',placeholder:'ej.: Ana Pérez',begin:'Comenzar la simulación',excelTag:'se muestra como contexto, no se evalúa aquí',scoredTag:'se evalúa en esta simulación',anonymous:'Anónimo'},
+pt:{of:'de',whatDo:'O que você faz?',outcome:'Resultado',youChose:'Você escolheu',immediate:'Reação imediata',down:'Mais adiante',leaned:'Pilares que esta escolha fortaleceu',left:'Pilares que ficaram de fora desta vez',none:'Nenhum desta vez',why:'Por quê',cont:'Continuar →',seeResults:'Ver seus resultados',complete:'Simulação concluída',strengths:'Pontos fortes',risks:'Riscos a observar',seePlan:'Ver seu plano de ação →',restart:'Reiniciar',planTag:'Plano de ação',your:'Seu',focusTag:'Pilar de foco para a discussão em grupo',scoredLow:'Pontuação {n}/100: a mais baixa dos seis pilares',contDoing:'Continuar fazendo',startDoing:'Começar a fazer',commit30:'Um compromisso para os próximos 30 dias',print:'Imprimir / Salvar como PDF',yourName:'Seu nome',placeholder:'ex.: Ana Souza',begin:'Iniciar a simulação',excelTag:'exibido como contexto, não avaliado aqui',scoredTag:'avaliado nesta simulação',anonymous:'Anônimo'}
 };
 const KEYS=['A','B','C'];
 
@@ -183,12 +182,10 @@ function devPlan(){
 }
 
 function renderResults(){
- const score=finalScore(),pr=T().profiles[profileKey()];
+ const pr=T().profiles[profileKey()];
  const bars=DIMS.map(d=>`<div class="bar"><div class="bn">${GROUPNAME[d]} · ${LABEL[d]}</div><div class="bt"><div class="bf" style="width:${state.scores[d]}%"></div></div><div style="text-align:right">${state.scores[d]}</div></div>`).join('');
  return `<main><div class="stage">
- <div class="tag">${U('complete')}</div>
- <div class="finalNum">${score}</div>
- <div class="sub">${U('finalSub')}</div>
+ <div class="tag" style="margin-bottom:14px">${U('complete')}</div>
  <div class="note">${S('resultNote')}</div>
  <div class="profile">${pr.name}</div>
  <p style="color:#f0e2d6;max-width:60ch">${pr.sum}</p>
