@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>The Mike Case</title>
-<meta name="description" content="The Mike Case, build 2026-10-05b">
+<meta name="description" content="The Mike Case, build 2026-10-07a">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{--ink:#3a0d13;--ink2:#5c1420;--panel:#4a1520;--panel2:#5c1c28;--paper:#f5ece0;--dim:#d9b6ab;--gold:#f2a71b;--line:rgba(245,236,224,.16);--lineS:rgba(245,236,224,.32);color-scheme:dark}
@@ -118,7 +118,8 @@ function topbar(){
 function renderLang(){
  return `<main><div class="stage lang">
  <div class="tag" style="margin-bottom:8px">Choose your language · Elige tu idioma · Escolha seu idioma</div>
- <h1 style="font-size:40px;line-height:1.1;margin-bottom:28px">The Mike Case</h1>
+ <h1 style="font-size:40px;line-height:1.1;margin-bottom:10px">The Mike Case</h1>
+ <p style="font-size:16px;color:var(--gold);font-weight:600;margin:0 0 28px">${[...new Set(LANGS.map(l=>GAME.t[l].ui.brand))].join(' \u00b7 ')}</p>
  ${LANGS.map(l=>`<button class="choice" onclick="setLang('${l}')"><div class="cl">${l.toUpperCase()}</div><div class="clabel">${LANGNAME[l]}</div><div class="arrow">→</div></button>`).join('')}
  </div></main>`;
 }
